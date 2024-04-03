@@ -1,1 +1,1 @@
-import "./styles/frame.css";
+import "../styles/frame.css";

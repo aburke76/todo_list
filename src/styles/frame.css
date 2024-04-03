@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: "Dela";
-    src: url("./fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf");
+    src: url("../fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf");
 }
 
 @font-face {
     font-family: "DM Sans";
-    src: url("./fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf");
+    src: url("../fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf");
 }
 
 :root {
