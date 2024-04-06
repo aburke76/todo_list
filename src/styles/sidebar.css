@@ -1,0 +1,31 @@
+@font-face {
+    font-family: "DM Sans";
+    src: url("../fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf");
+}
+
+#project-div {
+    padding-left: 10px;
+    font-family: "DM Sans";
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#project-name:hover {
+    cursor: pointer;
+}
+
+#project-div button {
+    background-color: rgb(112, 0, 0);
+    height: 30px;
+    width: 30px;
+    color: #dbe4ee;
+    font-size: 28px;
+    font-weight: 600;
+    border: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
