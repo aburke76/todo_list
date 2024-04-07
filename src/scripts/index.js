@@ -1,5 +1,5 @@
 import "../styles/frame.css";
-import { addProject, listNewProject } from "../scripts/createProject";
+import { addProject } from "../scripts/createProject";
 
 const newProject = document.querySelector("#add-project");
 const submitBtn = document.querySelector("#submit-project");
