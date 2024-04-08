@@ -3,7 +3,7 @@
     src: url("../fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf");
 }
 
-#project-div {
+.project-div {
     padding-left: 10px;
     font-family: "DM Sans";
     display: flex;
@@ -11,11 +11,11 @@
     align-items: center;
 }
 
-#project-name:hover {
+.project-name:hover {
     cursor: pointer;
 }
 
-#project-div button {
+.project-div button {
     background-color: rgb(112, 0, 0);
     height: 30px;
     width: 30px;
