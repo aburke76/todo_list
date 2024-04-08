@@ -52,26 +52,33 @@ export function addProject() {
     projectModal.showModal();
 }
 
-export function displayProjects() {
+export function displayProject() {
     const content = document.querySelector("#sidebar-content");
 
-    projectList.forEach((el) => {
-        const projectDiv = document.createElement("div");
-        const delBtn = document.createElement("button");
-        projectDiv.classList.add("project-div");
-        content.append(projectDiv);
-        const name = document.createElement("h3");
-        name.setAttribute("id", "project-name");
-        name.textContent = el.name;
-        projectDiv.append(name);
-        delBtn.textContent = "-";
-        projectDiv.append(delBtn);
+    const newestProject = projectList[projectList.length - 1];
 
-        delBtn.addEventListener("click", () => {
-            el.deleteProject();
-            console.log(projectList);
+    const projectDiv = document.createElement("div");
+    const delBtn = document.createElement("button");
+    projectDiv.classList.add("project-div");
+    content.append(projectDiv);
+    const name = document.createElement("h3");
+    name.setAttribute("id", "project-name");
+    name.textContent = newestProject.name;
+    projectDiv.append(name);
+    delBtn.textContent = "-";
+    projectDiv.append(delBtn);
 
-            projectDiv.remove();
-        });
+    delBtn.addEventListener("click", () => {
+        newestProject.deleteProject();
+        projectDiv.remove();
     });
+}
+
+export function listNewProject() {
+    const userInput = document.querySelector("#project-title");
+    const newProject = new Project(userInput.value);
+    newProject.addProject();
+    displayProject();
+    projectModal.close();
+    userInput.value = null;
 }
