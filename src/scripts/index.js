@@ -1,10 +1,14 @@
 import "../styles/frame.css";
-import { addProject, displayProjects } from "../scripts/createProject";
+import {
+    addProject,
+    listNewProject,
+    displayProject,
+} from "../scripts/manageProject";
 
 const newProject = document.querySelector("#add-project");
 const submitBtn = document.querySelector("#submit-project");
 
-displayProjects();
+displayProject();
 
 newProject.addEventListener("click", () => {
     addProject();
@@ -12,4 +16,5 @@ newProject.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    listNewProject();
 });
