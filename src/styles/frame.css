@@ -79,6 +79,10 @@ h1 {
     background-color: var(--blue);
 }
 
+#add-project {
+    height: 40px;
+    width: 40px;
+}
 button:hover {
     cursor: pointer;
     opacity: 50%;

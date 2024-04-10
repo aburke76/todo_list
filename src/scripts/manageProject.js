@@ -2,7 +2,7 @@ import "../styles/sidebar.css";
 
 const projectList = [];
 
-class Project {
+export class Project {
     constructor(name) {
         this.name = name;
         this.taskList = [];
@@ -22,9 +22,16 @@ class Project {
     addTask(task) {
         this.taskList.push(task);
     }
+
+    deleteTask() {
+        const index = this.taskList.indexOf(this);
+        if (index > -1) {
+            this.taskList.splice(index, 1);
+        }
+    }
 }
 
-class Task {
+export class Task {
     constructor(name, notes, dueDate, priority) {
         this.name = name;
         this.notes = notes;
@@ -67,6 +74,8 @@ export function displayProject() {
     projectDiv.append(name);
     delBtn.textContent = "-";
     projectDiv.append(delBtn);
+
+    //display project title and add task btn
 
     delBtn.addEventListener("click", () => {
         newestProject.deleteProject();
