@@ -28,6 +28,31 @@
             </form>
         </dialog>
 
+        <dialog id="task-modal">
+            <span class="close">&times;</span>
+            <h2>New Project</h2>
+            <form>
+                <label for="task-name"></label>
+                <input type="text" name="project-title" id="project-title" />
+                <label for="task-notes"></label>
+                <textarea
+                    name="task-notes"
+                    id="task-notes"
+                    cols="30"
+                    rows="10"
+                ></textarea>
+                <label for="task-dd"></label>
+                <input type="date" name="task-dd" id="task-dd" />
+                <label for="task-priority"></label>
+                <select name="task-priority" id="task-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button id="submit-project">Create</button>
+            </form>
+        </dialog>
+
         <div class="sidebar">
             <div class="sidebar-header">
                 <h1>Projects</h1>
@@ -37,7 +62,10 @@
         </div>
 
         <div class="project-container">
-            <div id="project-header"></div>
+            <div id="project-header">
+                <h3>Default</h3>
+                <button id="add-task-btn">+</button>
+            </div>
             <div id="project-content"></div>
         </div>
 
