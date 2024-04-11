@@ -1,4 +1,3 @@
-import "../styles/tasks.css";
 import { Project, Task } from "./manageProject";
 
 const taskModal = document.querySelector("#task-modal");

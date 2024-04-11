@@ -1,5 +1,3 @@
-import "../styles/sidebar.css";
-
 const projectList = [];
 
 export class Project {

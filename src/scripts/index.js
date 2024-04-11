@@ -1,4 +1,4 @@
-import "../styles/frame.css";
+import "../styles.css";
 import {
     addProject,
     listNewProject,
