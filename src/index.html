@@ -19,7 +19,7 @@
         </header>
 
         <dialog id="project-modal">
-            <span class="close">&times;</span>
+            <span id="closeProjectModal" class="close">&times;</span>
             <h2>New Project</h2>
             <form>
                 <label for="project-title"></label>
@@ -29,27 +29,27 @@
         </dialog>
 
         <dialog id="task-modal">
-            <span class="close">&times;</span>
+            <span id="closeTaskModal" class="close">&times;</span>
             <h2>New Project</h2>
-            <form>
-                <label for="task-name"></label>
+            <form id="task-form">
+                <label for="task-name">Task Name</label>
                 <input type="text" name="project-title" id="project-title" />
-                <label for="task-notes"></label>
+                <label for="task-notes">Notes</label>
                 <textarea
                     name="task-notes"
                     id="task-notes"
-                    cols="30"
-                    rows="10"
+                    cols="12"
+                    rows="4"
                 ></textarea>
-                <label for="task-dd"></label>
+                <label for="task-dd">Due Date</label>
                 <input type="date" name="task-dd" id="task-dd" />
-                <label for="task-priority"></label>
+                <label for="task-priority">Priority</label>
                 <select name="task-priority" id="task-priority">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="low" id="low">Low</option>
+                    <option value="medium" id="medium">Medium</option>
+                    <option value="high" id="high">High</option>
                 </select>
-                <button id="submit-project">Create</button>
+                <button id="submit-task">Create</button>
             </form>
         </dialog>
 
@@ -63,7 +63,7 @@
 
         <div class="project-container">
             <div id="project-header">
-                <h3>Default</h3>
+                <h3 id="project-h3">Default</h3>
                 <button id="add-task-btn">+</button>
             </div>
             <div id="project-content"></div>

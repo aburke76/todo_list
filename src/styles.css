@@ -59,7 +59,7 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px dotted rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 -4px 5px -5px black;
     height: 88.88px;
 }
 
@@ -102,7 +102,6 @@ button:active {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-bottom: 2px dotted rgba(0, 0, 0, 0.5);
 }
 
 #project-header h1 {
@@ -141,7 +140,8 @@ button:active {
     margin-right: 10px;
 }
 
-#project-modal {
+#project-modal,
+#task-modal {
     border: none;
     background-color: var(--slate-blue);
     margin: 15% auto;
@@ -150,6 +150,20 @@ button:active {
     border: 2px solid var(--light-gray);
     border-radius: 10px;
     box-shadow: 3px 3px 10px;
+}
+
+input,
+textarea,
+select,
+option {
+    background-color: var(--light-gray);
+    border: transparent;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#task-modal {
+    margin: auto;
 }
 
 .close {
@@ -170,6 +184,10 @@ h3:hover {
     cursor: pointer;
 }
 
+#project-h3 {
+    cursor: default;
+}
+
 #add-task-btn {
     height: 30px;
     width: 30px;
@@ -182,6 +200,27 @@ h3:hover {
     align-items: center;
     margin: 0;
     padding: 5px;
+}
+
+#task-modal {
+    font-family: "DM Sans";
+}
+#task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#task-form label {
+    padding-top: 5px;
+}
+
+#submit-task {
+    margin-top: 10px;
+}
+
+#task-modal::backdrop,
+#project-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 footer {

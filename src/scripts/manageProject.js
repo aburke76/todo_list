@@ -1,4 +1,4 @@
-const projectList = [];
+export const projectList = [];
 
 export class Project {
     constructor(name) {
@@ -53,6 +53,13 @@ console.log(projectList);
 
 const projectModal = document.querySelector("#project-modal");
 
+const closeBtn = document.querySelector("#closeProjectModal");
+export function closeProjectModal() {
+    closeBtn.addEventListener("click", () => {
+        projectModal.close();
+    });
+}
+
 export function addProject() {
     projectModal.showModal();
 }
@@ -73,8 +80,6 @@ export function displayProject() {
     delBtn.textContent = "-";
     projectDiv.append(delBtn);
 
-    //display project title and add task btn
-
     delBtn.addEventListener("click", () => {
         newestProject.deleteProject();
         projectDiv.remove();
@@ -89,3 +94,36 @@ export function listNewProject() {
     projectModal.close();
     userInput.value = null;
 }
+
+//task handler
+
+// const taskModal = document.querySelector("#task-modal");
+
+// export function createTask() {
+//     taskModal.showModal();
+// }
+
+// export function listTask() {
+//     const taskName = document.querySelector("#project-title");
+//     const taskNotes = document.querySelector("#task-notes");
+//     const taskDd = document.querySelector("#task-dd");
+//     const taskPriority = document.querySelector("#task-priority");
+//     const currentProjectTitle =
+//         document.querySelector("#project-h3").textContent;
+
+//     const newTask = new Task(
+//         taskName.value,
+//         taskNotes.value,
+//         taskDd.value,
+//         taskPriority.value
+//     );
+
+//     const currentProject = projectList.indexOf(currentProjectTitle);
+//     console.log(projectList);
+//     console.log(currentProject);
+
+//     taskModal.close();
+//     console.log(newTask);
+//     projectList[0].addTask(newTask);
+//     console.log(projectList[0]);
+// }

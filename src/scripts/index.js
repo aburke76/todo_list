@@ -3,12 +3,14 @@ import {
     addProject,
     listNewProject,
     displayProject,
+    closeProjectModal,
 } from "../scripts/manageProject";
-import { createTask } from "../scripts/manageTask";
+import { createTask, listTask, closeTaskModal } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
 const submitBtn = document.querySelector("#submit-project");
 const newTaskBtn = document.querySelector("#add-task-btn");
+const submitTask = document.querySelector("#submit-task");
 
 displayProject();
 
@@ -24,3 +26,11 @@ submitBtn.addEventListener("click", (e) => {
 newTaskBtn.addEventListener("click", () => {
     createTask();
 });
+
+submitTask.addEventListener("click", (e) => {
+    e.preventDefault();
+    listTask();
+});
+
+closeProjectModal();
+closeTaskModal();
