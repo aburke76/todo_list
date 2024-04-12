@@ -1,4 +1,4 @@
-import { Project, Task, projectList } from "./manageProject";
+import { Project, Task, projectList, findProject } from "./manageProject";
 Project;
 
 const taskModal = document.querySelector("#task-modal");
@@ -15,12 +15,10 @@ export function closeTaskModal() {
 }
 
 export function listTask() {
-    const taskName = document.querySelector("#project-title");
+    const taskName = document.querySelector("#task-title");
     const taskNotes = document.querySelector("#task-notes");
     const taskDd = document.querySelector("#task-dd");
     const taskPriority = document.querySelector("#task-priority");
-    const currentProjectTitle =
-        document.querySelector("#project-h3").textContent;
 
     const newTask = new Task(
         taskName.value,
@@ -29,7 +27,9 @@ export function listTask() {
         taskPriority.value
     );
 
-    const currentProject = projectList.indexOf(currentProjectTitle);
+    const currentProject = projectList.filter((project) => {
+        project;
+    });
     console.log(projectList);
     console.log(currentProject);
 
@@ -37,4 +37,36 @@ export function listTask() {
     console.log(newTask);
     projectList[0].addTask(newTask);
     console.log(projectList[0]);
+
+    displayTask();
+
+    taskName.value = null;
+    taskNotes.value = null;
+    taskDd.value = null;
+    taskPriority.value = null;
+}
+
+export function displayTask() {
+    const projectContent = document.querySelector("#project-content");
+
+    const taskName = document.querySelector("#task-title");
+    const taskNotes = document.querySelector("#task-notes");
+    const taskDd = document.querySelector("#task-dd");
+    const taskPriority = document.querySelector("#task-priority");
+
+    const taskDiv = document.createElement("div");
+    taskDiv.setAttribute("id", "task-div");
+
+    const name = document.createElement("h3");
+    const notes = document.createElement("div");
+    const date = document.createElement("div");
+    const priority = document.createElement("div");
+
+    name.textContent = taskName.value;
+    notes.textContent = taskNotes.value;
+    date.textContent = `Due: ${taskDd.value}`;
+    priority.textContent = `Priority: ${taskPriority.value}`;
+
+    taskDiv.append(name, notes, date, priority);
+    projectContent.append(taskDiv);
 }
