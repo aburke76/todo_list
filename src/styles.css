@@ -68,7 +68,8 @@ h1 {
 }
 
 .sidebar-button,
-#add-todont {
+#add-todont,
+#add-task-btn {
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -152,6 +153,10 @@ button:active {
     box-shadow: 3px 3px 10px;
 }
 
+#project-modal h2 {
+    margin-top: 5px;
+}
+
 input,
 textarea,
 select,
@@ -211,11 +216,20 @@ h3:hover {
 }
 
 #task-form label {
-    padding-top: 5px;
+    padding-top: 10px;
 }
 
 #submit-task {
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+#submit-task,
+#submit-project {
+    background-color: var(--blue);
+    color: var(--light-gray);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #task-modal::backdrop,
