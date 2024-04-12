@@ -49,7 +49,7 @@ const defaultTask = new Task(
 
 defaultProject.addProject();
 defaultProject.addTask(defaultTask);
-console.log(projectList);
+// console.log(projectList);
 
 const projectModal = document.querySelector("#project-modal");
 
@@ -95,35 +95,22 @@ export function listNewProject() {
     userInput.value = null;
 }
 
-//task handler
-
-// const taskModal = document.querySelector("#task-modal");
-
-// export function createTask() {
-//     taskModal.showModal();
-// }
-
-// export function listTask() {
-//     const taskName = document.querySelector("#project-title");
-//     const taskNotes = document.querySelector("#task-notes");
-//     const taskDd = document.querySelector("#task-dd");
-//     const taskPriority = document.querySelector("#task-priority");
-//     const currentProjectTitle =
-//         document.querySelector("#project-h3").textContent;
-
-//     const newTask = new Task(
-//         taskName.value,
-//         taskNotes.value,
-//         taskDd.value,
-//         taskPriority.value
-//     );
-
-//     const currentProject = projectList.indexOf(currentProjectTitle);
-//     console.log(projectList);
-//     console.log(currentProject);
-
-//     taskModal.close();
-//     console.log(newTask);
-//     projectList[0].addTask(newTask);
-//     console.log(projectList[0]);
-// }
+export function findProjectAndTask(project, task) {
+    for (let i = 0; i < projectList.length; i++) {
+        if (projectList[i].name === project) {
+            const currentProject = projectList[i];
+            // console.log(currentProject);
+            for (let j = 0; j < currentProject.taskList.length; j++) {
+                if (currentProject.taskList[j].name === task) {
+                    // console.log(currentProject.taskList[j].name);
+                } else {
+                    console.log("Task Not found");
+                    return false;
+                }
+            }
+        } else {
+            console.log("Project Not found");
+            return false;
+        }
+    }
+}
