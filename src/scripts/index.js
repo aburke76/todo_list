@@ -4,8 +4,15 @@ import {
     listNewProject,
     displayProject,
     closeProjectModal,
+    findProjectAndTask,
+    projectList,
 } from "../scripts/manageProject";
-import { createTask, listTask, closeTaskModal } from "../scripts/manageTask";
+import {
+    createTask,
+    listTask,
+    closeTaskModal,
+    displayTask,
+} from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
 const submitBtn = document.querySelector("#submit-project");
