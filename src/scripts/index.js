@@ -19,25 +19,25 @@ const submitBtn = document.querySelector("#submit-project");
 const newTaskBtn = document.querySelector("#add-task-btn");
 const submitTask = document.querySelector("#submit-task");
 
-displayProject();
+// displayProject();
 
-newProject.addEventListener("click", () => {
-    addProject();
-});
+// newProject.addEventListener("click", () => {
+//     addProject();
+// });
 
-submitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    listNewProject();
-});
+// submitBtn.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     listNewProject();
+// });
 
-newTaskBtn.addEventListener("click", () => {
-    createTask();
-});
+// newTaskBtn.addEventListener("click", () => {
+//     createTask();
+// });
 
-submitTask.addEventListener("click", (e) => {
-    e.preventDefault();
-    listTask();
-});
+// submitTask.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     listTask();
+// });
 
-closeProjectModal();
-closeTaskModal();
+// closeProjectModal();
+// closeTaskModal();
