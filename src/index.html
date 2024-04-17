@@ -10,20 +10,25 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <title>To-DON'T List</title>
+        <title>To-Do List</title>
     </head>
     <body>
         <header>
-            <h1>To-DON'T List</h1>
-            List the Things You Don't Want to Do
+            <h1>To-Do List</h1>
+            Get things done!
         </header>
 
         <dialog id="project-modal">
-            <span id="closeProjectModal" class="close">&times;</span>
+            <span class="close" id="close-project-modal">&times;</span>
             <h2>New Project</h2>
-            <form>
+            <form id="project-form">
                 <label for="project-title"></label>
-                <input type="text" name="project-title" id="project-title" />
+                <input
+                    required
+                    type="text"
+                    name="project-title"
+                    id="project-title"
+                />
                 <button type="submit" id="submit-project">Create</button>
             </form>
         </dialog>

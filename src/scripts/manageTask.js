@@ -1,72 +1,25 @@
-import { Project, Task, projectList, findProject } from "./manageProject";
-Project;
+import { v4 as uuidv4 } from "uuid";
 
-const taskModal = document.querySelector("#task-modal");
-
-export function createTask() {
-    taskModal.showModal();
+export class TaskManager {
+    projectTaskList = [];
+    addTask(task) {
+        this.projectTaskList.push(task);
+    }
 }
 
-const closeBtn = document.querySelector("#closeTaskModal");
-export function closeTaskModal() {
-    closeBtn.addEventListener("click", () => {
-        taskModal.close();
-    });
+export class Task {
+    constructor(name, notes, dueDate, priority, id = uuidv4()) {
+        this.name = name;
+        this.notes = notes;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.id = id;
+    }
 }
 
-export function listTask() {
-    const taskName = document.querySelector("#task-title");
-    const taskNotes = document.querySelector("#task-notes");
-    const taskDd = document.querySelector("#task-dd");
-    const taskPriority = document.querySelector("#task-priority");
-
-    const newTask = new Task(
-        taskName.value,
-        taskNotes.value,
-        taskDd.value,
-        taskPriority.value
-    );
-
-    const currentProject = projectList.filter((project) => {
-        project;
-    });
-    console.log(projectList);
-    console.log(currentProject);
-
-    taskModal.close();
-    console.log(newTask);
-    projectList[0].addTask(newTask);
-    console.log(projectList[0]);
-
-    displayTask();
-
-    taskName.value = null;
-    taskNotes.value = null;
-    taskDd.value = null;
-    taskPriority.value = null;
-}
-
-export function displayTask() {
-    const projectContent = document.querySelector("#project-content");
-
-    const taskName = document.querySelector("#task-title");
-    const taskNotes = document.querySelector("#task-notes");
-    const taskDd = document.querySelector("#task-dd");
-    const taskPriority = document.querySelector("#task-priority");
-
-    const taskDiv = document.createElement("div");
-    taskDiv.setAttribute("id", "task-div");
-
-    const name = document.createElement("h3");
-    const notes = document.createElement("div");
-    const date = document.createElement("div");
-    const priority = document.createElement("div");
-
-    name.textContent = taskName.value;
-    notes.textContent = taskNotes.value;
-    date.textContent = `Due: ${taskDd.value}`;
-    priority.textContent = `Priority: ${taskPriority.value}`;
-
-    taskDiv.append(name, notes, date, priority);
-    projectContent.append(taskDiv);
-}
+const defaultTask = new Task(
+    "Don't Cry",
+    "keep it together, man",
+    "04/09/2024",
+    "High"
+);

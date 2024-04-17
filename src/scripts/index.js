@@ -1,11 +1,9 @@
 import "../styles.css";
 import {
-    addProject,
-    listNewProject,
+    createProject,
     displayProject,
+    openProjectModal,
     closeProjectModal,
-    findProjectAndTask,
-    projectList,
 } from "../scripts/manageProject";
 import {
     createTask,
@@ -15,20 +13,24 @@ import {
 } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
-const submitBtn = document.querySelector("#submit-project");
+const submitProject = document.querySelector("#project-form");
+const closeProject = document.querySelector("#close-project-modal");
 const newTaskBtn = document.querySelector("#add-task-btn");
 const submitTask = document.querySelector("#submit-task");
 
-// displayProject();
+newProject.addEventListener("click", () => {
+    openProjectModal();
+});
 
-// newProject.addEventListener("click", () => {
-//     addProject();
-// });
+submitProject.addEventListener("submit", (e) => {
+    e.preventDefault();
+    createProject();
+    closeProjectModal();
+});
 
-// submitBtn.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     listNewProject();
-// });
+closeProject.addEventListener("click", () => {
+    closeProjectModal();
+});
 
 // newTaskBtn.addEventListener("click", () => {
 //     createTask();
@@ -39,5 +41,5 @@ const submitTask = document.querySelector("#submit-task");
 //     listTask();
 // });
 
-// closeProjectModal();
-// closeTaskModal();
+displayProject();
+closeProjectModal();
