@@ -67,23 +67,32 @@ h1 {
     font-size: 24px;
 }
 
-.sidebar-button,
-#add-todont,
-#add-task-btn {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    border: transparent;
-    color: var(--light-gray);
-    font-size: 28px;
+.project-button,
+.task-button {
     text-align: center;
-    background-color: var(--blue);
+    vertical-align: center;
+    border-radius: 40%;
+    border: transparent;
+    background-color: transparent;
+    color: var(--blue);
 }
 
-#add-project {
+.fa-solid {
+    display: grid;
+    place-self: center;
+}
+
+.project-button {
     height: 40px;
     width: 40px;
+    color: var(--light-gray);
 }
+
+.task-button {
+    height: 35px;
+    width: 35px;
+}
+
 button:hover {
     cursor: pointer;
     opacity: 50%;
@@ -126,19 +135,18 @@ button:active {
     cursor: pointer;
 }
 
-.project-div button {
-    background-color: rgb(112, 0, 0);
+.delBtn {
+    background-color: transparent;
     height: 30px;
     width: 30px;
-    color: #dbe4ee;
-    font-size: 28px;
-    font-weight: 600;
+    color: rgb(99, 0, 0);
     border: transparent;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-right: 10px;
+    padding: 0;
 }
 
 #project-modal,
@@ -191,12 +199,6 @@ h3:hover {
 
 #project-h3 {
     cursor: default;
-}
-
-#add-task-btn {
-    height: 30px;
-    width: 30px;
-    font-size: 22px;
 }
 
 #project-header {

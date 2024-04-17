@@ -63,12 +63,14 @@ export function displayProject() {
     const currentProject = projectList.allProjects.length - 1;
 
     const projectDiv = document.createElement("div");
+    projectDiv.classList.add("project-div");
     const projectName = document.createElement("h3");
     projectName.textContent = projectList.allProjects[currentProject].name;
     projectDiv.append(projectName);
 
     const delBtn = document.createElement("button");
-    delBtn.textContent = "-";
+    delBtn.classList.add("delBtn");
+    delBtn.innerHTML = "<i class='fa-solid fa-minus fa-2xl'></i>";
     projectDiv.append(delBtn);
 
     sidebarContent.append(projectDiv);
