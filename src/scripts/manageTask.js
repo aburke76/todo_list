@@ -1,25 +1,21 @@
 import { v4 as uuidv4 } from "uuid";
+import { projectList } from "./manageProject";
 
-export class TaskManager {
-    projectTaskList = [];
-    addTask(task) {
-        this.projectTaskList.push(task);
-    }
+export function openTaskModal() {
+    const modal = document.querySelector("#task-modal");
+    modal.showModal();
 }
 
-export class Task {
-    constructor(name, notes, dueDate, priority, id = uuidv4()) {
-        this.name = name;
-        this.notes = notes;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.id = id;
-    }
-}
+export function createTask() {
+    const name = document.querySelector("#task-name");
+    const notes = document.querySelector("#task-notes");
+    const date = document.querySelector("#task-dd");
+    const priority = document.querySelector("#task-priority");
 
-const defaultTask = new Task(
-    "Don't Cry",
-    "keep it together, man",
-    "04/09/2024",
-    "High"
-);
+    const newTask = new Task(
+        name.value,
+        notes.value,
+        date.value,
+        priority.value
+    );
+}

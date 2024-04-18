@@ -1,16 +1,11 @@
 import "../styles.css";
+import { displayProject } from "./displayProject";
 import {
     createProject,
-    displayProject,
     openProjectModal,
     closeProjectModal,
 } from "../scripts/manageProject";
-import {
-    createTask,
-    listTask,
-    closeTaskModal,
-    displayTask,
-} from "../scripts/manageTask";
+import { createTask, openTaskModal } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
 const submitProject = document.querySelector("#project-form");
@@ -25,16 +20,15 @@ newProject.addEventListener("click", () => {
 submitProject.addEventListener("submit", (e) => {
     e.preventDefault();
     createProject();
-    closeProjectModal();
 });
 
 closeProject.addEventListener("click", () => {
     closeProjectModal();
 });
 
-// newTaskBtn.addEventListener("click", () => {
-//     createTask();
-// });
+newTaskBtn.addEventListener("click", () => {
+    openTaskModal();
+});
 
 // submitTask.addEventListener("click", (e) => {
 //     e.preventDefault();

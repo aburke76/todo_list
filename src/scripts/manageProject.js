@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { displayProject } from "./displayProject";
 
 class ProjectManager {
     allProjects = [];
@@ -6,9 +7,11 @@ class ProjectManager {
         this.allProjects.push(project);
     }
 
-    // remove(project) {
-    //    code here
-    // }
+    removeProject(id) {
+        this.allProjects = this.allProjects.filter((el) => {
+            return el.id !== id;
+        });
+    }
 }
 
 export class Project {
@@ -18,20 +21,31 @@ export class Project {
         this.id = id;
     }
 
-    getId() {
+    get getProjectId() {
         return this.id; //returns project instance id
     }
 
-    addProjectTask(task) {
+    addTask(task) {
         this.taskList.push(task);
     }
 }
 
-const projectList = new ProjectManager();
+export class Task {
+    constructor(name, notes, dueDate, priority, id = uuidv4()) {
+        this.name = name;
+        this.notes = notes;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.id = id;
+    }
+}
+
+export const projectList = new ProjectManager();
 
 const defaultProject = new Project("Default");
 projectList.addProject(defaultProject);
-console.log(projectList);
+defaultProject.addTask("Don't Cry", "keep it together, man", "01/01/1999");
+console.log(projectList.allProjects);
 
 export function openProjectModal() {
     const modal = document.querySelector("#project-modal");
@@ -40,13 +54,6 @@ export function openProjectModal() {
 
 export function closeProjectModal() {
     const modal = document.querySelector("#project-modal");
-    if (modal.open) {
-        window.addEventListener("click", (e) => {
-            if (e.target.id !== modal) {
-                modal.close();
-            }
-        });
-    }
     modal.close();
 }
 
@@ -55,23 +62,7 @@ export function createProject() {
     const newProject = new Project(userInput.value);
     projectList.addProject(newProject);
     displayProject();
-}
-
-export function displayProject() {
-    const sidebarContent = document.querySelector("#sidebar-content");
-
-    const currentProject = projectList.allProjects.length - 1;
-
-    const projectDiv = document.createElement("div");
-    projectDiv.classList.add("project-div");
-    const projectName = document.createElement("h3");
-    projectName.textContent = projectList.allProjects[currentProject].name;
-    projectDiv.append(projectName);
-
-    const delBtn = document.createElement("button");
-    delBtn.classList.add("delBtn");
-    delBtn.innerHTML = "<i class='fa-solid fa-minus fa-2xl'></i>";
-    projectDiv.append(delBtn);
-
-    sidebarContent.append(projectDiv);
+    closeProjectModal();
+    userInput.value = null;
+    console.log(projectList.allProjects);
 }
