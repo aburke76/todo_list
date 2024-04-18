@@ -20,7 +20,7 @@ export function displayProject() {
     projectDiv.append(delBtn);
 
     delBtn.addEventListener("click", () => {
-        deleteProject(delBtn, projectDiv);
+        deleteProject(currentProjectId);
     });
 
     sidebarContent.append(projectDiv);

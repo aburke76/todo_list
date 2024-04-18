@@ -67,17 +67,17 @@ export function createProject() {
     console.log(projectList.allProjects);
 }
 
-export function deleteProject(btn, div) {
+export function deleteProject(projectId) {
+    const projectDivs = document.querySelectorAll(".project-div");
     projectList.allProjects.forEach((project) => {
-        if (btn.id === project.id) {
+        if (projectId === project.id) {
             projectList.removeProject(project.id);
         }
     });
-    console.log(projectList.allProjects);
-    const projectDivs = document.querySelectorAll(".project-div");
     projectDivs.forEach((element) => {
-        if (div.id === element.id) {
+        if (projectId === element.id) {
             element.remove();
         }
     });
+    //console.log(projectList.allProjects);
 }
