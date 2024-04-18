@@ -1,4 +1,4 @@
-import { projectList } from "./manageProject";
+import { projectList, deleteProject } from "./manageProject";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
@@ -24,19 +24,4 @@ export function displayProject() {
     });
 
     sidebarContent.append(projectDiv);
-}
-
-function deleteProject(btn, div) {
-    projectList.allProjects.forEach((project) => {
-        if (btn.id === project.id) {
-            projectList.removeProject(project.id);
-        }
-    });
-    console.log(projectList.allProjects);
-    const projectDivs = document.querySelectorAll(".project-div");
-    projectDivs.forEach((element) => {
-        if (div.id === element.id) {
-            element.remove();
-        }
-    });
 }
