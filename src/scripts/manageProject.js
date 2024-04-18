@@ -66,3 +66,18 @@ export function createProject() {
     userInput.value = null;
     console.log(projectList.allProjects);
 }
+
+export function deleteProject(btn, div) {
+    projectList.allProjects.forEach((project) => {
+        if (btn.id === project.id) {
+            projectList.removeProject(project.id);
+        }
+    });
+    console.log(projectList.allProjects);
+    const projectDivs = document.querySelectorAll(".project-div");
+    projectDivs.forEach((element) => {
+        if (div.id === element.id) {
+            element.remove();
+        }
+    });
+}
