@@ -1,15 +1,23 @@
 import "../styles.css";
 import { displayProject } from "./displayProject";
+import { displayTask } from "./displayTask";
 import {
     createProject,
     openProjectModal,
     closeProjectModal,
+    clearProjectModal,
 } from "../scripts/manageProject";
-import { createTask, openTaskModal } from "../scripts/manageTask";
+import {
+    closeTaskModal,
+    createTask,
+    openTaskModal,
+    clearTaskModal,
+} from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
 const submitProject = document.querySelector("#project-form");
 const closeProject = document.querySelector("#close-project-modal");
+const closeTask = document.querySelector("#close-task-modal");
 const newTaskBtn = document.querySelector("#add-task-btn");
 const submitTask = document.querySelector("#submit-task");
 
@@ -23,6 +31,7 @@ submitProject.addEventListener("submit", (e) => {
 });
 
 closeProject.addEventListener("click", () => {
+    clearProjectModal();
     closeProjectModal();
 });
 
@@ -30,10 +39,16 @@ newTaskBtn.addEventListener("click", () => {
     openTaskModal();
 });
 
-// submitTask.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     listTask();
-// });
+submitTask.addEventListener("click", (e) => {
+    e.preventDefault();
+    createTask();
+});
+
+closeTask.addEventListener("click", () => {
+    clearTaskModal();
+    closeTaskModal();
+});
 
 displayProject();
+// createTask();
 closeProjectModal();
