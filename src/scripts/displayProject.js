@@ -7,7 +7,7 @@ export function displayProject() {
     const currentProjectId = projectList.allProjects[currentProject].id;
 
     const projectDiv = document.createElement("div");
-    projectDiv.classList.add("project-div");
+    projectDiv.classList.add("project-div", "active");
     projectDiv.setAttribute("id", currentProjectId);
     const projectName = document.createElement("h3");
     projectName.textContent = projectList.allProjects[currentProject].name;
