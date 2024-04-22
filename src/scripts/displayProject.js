@@ -1,4 +1,5 @@
 import { projectList, deleteProject } from "./manageProject";
+import { activeProject } from "./manageTask";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
@@ -7,16 +8,20 @@ export function displayProject() {
     const currentProjectId = projectList.allProjects[currentProject].id;
 
     const projectDiv = document.createElement("div");
-    projectDiv.classList.add("project-div", "active");
+    projectDiv.classList.add("project-div");
     projectDiv.setAttribute("id", currentProjectId);
     const projectName = document.createElement("h3");
     projectName.textContent = projectList.allProjects[currentProject].name;
+    projectName.setAttribute("id", currentProjectId);
+    projectName.classList.add("active", "project-name");
     projectDiv.append(projectName);
 
     const delBtn = document.createElement("button");
     delBtn.classList.add("delBtn");
     delBtn.setAttribute("id", currentProjectId);
-    delBtn.innerHTML = "<i class='fa-solid fa-minus fa-2xl'></i>";
+    const i = document.createElement("i");
+    i.classList.add("fa-solid", "fa-minus", "fa-2xl");
+    delBtn.append(i);
     projectDiv.append(delBtn);
 
     delBtn.addEventListener("click", () => {
@@ -24,4 +29,8 @@ export function displayProject() {
     });
 
     sidebarContent.append(projectDiv);
+}
+
+export function showAllTasks(project) {
+    const currentProject = activeProject();
 }
