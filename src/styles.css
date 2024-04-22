@@ -152,7 +152,8 @@ button:active {
     cursor: pointer;
 }
 
-.delBtn {
+.delBtn,
+.task-del-btn {
     background-color: transparent;
     height: 30px;
     width: 30px;
@@ -250,6 +251,17 @@ option {
 #task-modal::backdrop,
 #project-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.task-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 3px 3px 10px;
+    border-radius: 0.5em;
+    background-color: var(--gray-blue);
+    margin-left: 1rem;
+    padding: 5px;
 }
 
 footer {
