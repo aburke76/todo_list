@@ -22,19 +22,17 @@ export class Project {
         this.id = id;
     }
 
-    get getProjectId() {
-        return this.id; //returns project instance id
-    }
-
     addTask(task) {
         task.projectId = this.id;
         this.taskList.push(task);
     }
 
     removeTask(id) {
-        this.taskList = this.taskList.filter((el) => {
-            return el.id !== id;
-        });
+        for (let i = 0; i < this.taskList.length; i++) {
+            if (this.taskList[i].taskId === id) {
+                this.taskList.splice(i, 1);
+            }
+        }
     }
 }
 
@@ -48,19 +46,13 @@ export class Task {
     }
 }
 
+// const defaultTask = new Task("A", "B", "01/01/1998", "High");
+
 export const projectList = new ProjectManager();
 
 const defaultProject = new Project("Default");
-defaultProject.active = true;
 projectList.addProject(defaultProject);
-const defaultTask = new Task(
-    "Don't Cry",
-    "keep it together, man",
-    "01/01/1999",
-    "High"
-);
-
-defaultProject.addTask(defaultTask);
+// defaultProject.addTask(defaultTask);
 
 export function openProjectModal() {
     const modal = document.querySelector("#project-modal");
@@ -85,8 +77,6 @@ export function createProject() {
     clearProjectModal();
     closeProjectModal();
 }
-
-export function selectProject() {}
 
 export function deleteProject(projectId) {
     const projectDivs = document.querySelectorAll(".project-div");
