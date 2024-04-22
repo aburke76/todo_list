@@ -1,1 +1,1 @@
-todo list project for The Odin Project, with a twist
+This is a ToDo list project for The Odin Project.
