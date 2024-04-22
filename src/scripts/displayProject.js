@@ -1,3 +1,4 @@
+import { displayTask, selectAllTasks } from "./displayTask";
 import { projectList, deleteProject } from "./manageProject";
 import { activeProject } from "./manageTask";
 
@@ -31,6 +32,9 @@ export function displayProject() {
     sidebarContent.append(projectDiv);
 }
 
-export function showAllTasks(project) {
-    const currentProject = activeProject();
+export function showAllTasks() {
+    const taskList = selectAllTasks();
+    taskList.forEach(() => {
+        displayTask();
+    });
 }

@@ -90,5 +90,4 @@ export function deleteProject(projectId) {
             element.remove();
         }
     });
-    //console.log(projectList.allProjects);
 }

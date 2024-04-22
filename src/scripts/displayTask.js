@@ -1,5 +1,5 @@
 import { projectList } from "./manageProject";
-import { findTask, deleteTask } from "./manageTask";
+import { findTask, deleteTask, activeProject } from "./manageTask";
 
 export function displayTask() {
     const projectContent = document.querySelector("#project-content");
@@ -31,12 +31,8 @@ export function displayTask() {
     });
 }
 
-// export function removeTask() {
-//     const taskDivs = document.querySelectorAll(".task-div");
-//     const currentTask = findTask();
-//     taskDivs.forEach((el) => {
-//         if (currentTask.taskId === el.id) {
-//             el.remove();
-//         }
-//     });
-// }
+export function selectAllTasks() {
+    const currentProject = activeProject();
+    projectTasks = currentProject.taskList;
+    return projectTasks;
+}

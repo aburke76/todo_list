@@ -33,15 +33,26 @@ export function createTask() {
     console.log(newTask.taskId);
 }
 
+export function activeProject() {
+    const projectId = activeProjectId();
+    let activeProject;
+    for (let i = 0; i < projectList.allProjects.length; i++) {
+        if (projectList.allProjects[i].id === projectId) {
+            activeProject = projectList.allProjects[i];
+        }
+    }
+    return activeProject;
+}
+
 export function activeProjectId() {
-    const projectDivs = document.querySelectorAll(".project-div");
-    let divId;
-    projectDivs.forEach((div) => {
-        if (div.classList.value.includes("active")) {
-            divId = div.id;
+    const projects = document.querySelectorAll(".project-name");
+    let h3Id;
+    projects.forEach((project) => {
+        if (project.classList.value.includes("active")) {
+            h3Id = project.id;
         }
     });
-    return divId;
+    return h3Id;
 }
 
 function addTask(task) {
@@ -102,7 +113,6 @@ export function findProject() {
 }
 
 export function deleteTask(taskId) {
-    //TAKING OUT NEWEST TASK
     const currentProject = findProject();
     const taskList = findTaskList();
     let selectedTaskId;
