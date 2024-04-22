@@ -1,17 +1,23 @@
 import "../styles.css";
 import { displayProject } from "./displayProject";
-import { displayTask } from "./displayTask";
+import { displayTask, removeTask } from "./displayTask";
 import {
     createProject,
     openProjectModal,
     closeProjectModal,
     clearProjectModal,
+    defaultTask,
+    projectList,
 } from "../scripts/manageProject";
 import {
     closeTaskModal,
     createTask,
     openTaskModal,
     clearTaskModal,
+    findTask,
+    activeProjectId,
+    deleteTask,
+    findTaskList,
 } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
@@ -50,5 +56,4 @@ closeTask.addEventListener("click", () => {
 });
 
 displayProject();
-// createTask();
 closeProjectModal();
