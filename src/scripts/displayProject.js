@@ -16,9 +16,6 @@ export function displayProject() {
     projectDiv.setAttribute("id", currentProjectId);
     const projectName = document.createElement("h3");
     projectName.textContent = projectList.allProjects[currentProject].name;
-    if (projectName.textContent === "Default") {
-        projectName.classList.add("active");
-    }
     projectName.setAttribute("id", currentProjectId);
     projectName.classList.add("project-name");
     projectDiv.append(projectName);
@@ -41,7 +38,6 @@ export function displayProject() {
 
 export function showAllTasks() {
     const taskList = selectAllTasks();
-    console.log(taskList);
     const projectContent = document.querySelector("#project-content");
     taskList.forEach((task) => {
         const taskDiv = document.createElement("div");

@@ -16,9 +16,10 @@ class ProjectManager {
 }
 
 export class Project {
-    constructor(name, id = uuidv4()) {
+    constructor(name, active, id = uuidv4()) {
         this.name = name;
         this.taskList = [];
+        this.active = active;
         this.id = id;
     }
 
@@ -48,7 +49,7 @@ export class Task {
 
 export const projectList = new ProjectManager();
 
-const defaultProject = new Project("Default");
+const defaultProject = new Project("Default", true);
 projectList.addProject(defaultProject);
 
 export function openProjectModal() {

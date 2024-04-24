@@ -24,68 +24,52 @@ export function createTask() {
         priority.value
     );
 
-    activeProjectId();
+    activeProject();
     addTask(newTask);
 
     closeTaskModal();
     clearTaskModal();
     displayTask(newTask);
-    const thisList = activeProject();
-    console.log(thisList.taskList);
 }
 
 export function activeProject() {
-    const projectId = activeProjectId();
     let activeProject;
     for (let i = 0; i < projectList.allProjects.length; i++) {
-        if (projectList.allProjects[i].id === projectId) {
+        if (projectList.allProjects[i].active === true) {
             activeProject = projectList.allProjects[i];
         }
     }
     return activeProject;
 }
 
-export function activeProjectId() {
-    const projects = document.querySelectorAll(".project-name");
-    let h3Id;
-    projects.forEach((project) => {
-        if (project.classList.value.includes("active")) {
-            //get rid of ACTIVE class
-            h3Id = project.id;
-        }
-    });
-    return h3Id;
-}
-
 function addTask(task) {
-    const elId = activeProjectId();
+    // const activeProject = activeProject();
     for (let i = 0; i < projectList.allProjects.length; i++) {
-        if (projectList.allProjects[i].id === elId) {
+        if (projectList.allProjects[i].id === activeProject().id) {
             projectList.allProjects[i].addTask(task);
         }
     }
 }
 
 export function findTaskList() {
-    const projectId = activeProjectId();
+    // const activeProject = activeProject();
     let selectedProject;
     let currentTaskList;
     for (let i = 0; i < projectList.allProjects.length; i++) {
-        if (projectList.allProjects[i].id === projectId) {
+        if (projectList.allProjects[i].id === activeProject().id) {
             selectedProject = i;
         }
     }
     currentTaskList = projectList.allProjects[selectedProject].taskList;
-    console.log(currentTaskList);
     return currentTaskList;
 }
 
 export function findTask() {
-    const projectId = activeProjectId();
+    // const activeProject = activeProject();
     let selectedProject;
     let currentTask;
     for (let i = 0; i < projectList.allProjects.length; i++) {
-        if (projectList.allProjects[i].id === projectId) {
+        if (projectList.allProjects[i].id === activeProject().id) {
             selectedProject = i;
         }
     }
@@ -96,7 +80,7 @@ export function findTask() {
     ) {
         if (
             projectList.allProjects[selectedProject].taskList[i].projectId ===
-            projectId
+            activeProject().id
         ) {
             currentTask = projectList.allProjects[selectedProject].taskList[i];
         }
@@ -105,10 +89,10 @@ export function findTask() {
 }
 
 export function findProject() {
-    const projectId = activeProjectId();
+    // const activeProject = activeProject();
     let currentProject;
     for (let i = 0; i < projectList.allProjects.length; i++) {
-        if (projectList.allProjects[i].id === projectId) {
+        if (projectList.allProjects[i].id === activeProject().id) {
             currentProject = i;
         }
     }
