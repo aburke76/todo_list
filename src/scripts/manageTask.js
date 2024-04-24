@@ -30,7 +30,8 @@ export function createTask() {
     closeTaskModal();
     clearTaskModal();
     displayTask(newTask);
-    console.log(newTask.taskId);
+    const thisList = activeProject();
+    console.log(thisList.taskList);
 }
 
 export function activeProject() {
@@ -49,6 +50,7 @@ export function activeProjectId() {
     let h3Id;
     projects.forEach((project) => {
         if (project.classList.value.includes("active")) {
+            //get rid of ACTIVE class
             h3Id = project.id;
         }
     });
@@ -74,6 +76,7 @@ export function findTaskList() {
         }
     }
     currentTaskList = projectList.allProjects[selectedProject].taskList;
+    console.log(currentTaskList);
     return currentTaskList;
 }
 
@@ -138,13 +141,18 @@ export function deleteTask(taskId) {
     console.log(taskList);
 }
 
-function clearTaskModal() {
+export function selectAllTasks() {
+    const currentProject = activeProject();
+    const projectTasks = currentProject.taskList;
+    return projectTasks;
+}
+
+export function clearTaskModal() {
     const name = document.querySelector("#task-name");
     const notes = document.querySelector("#task-notes");
     const date = document.querySelector("#task-dd");
-    const priority = document.querySelector("#task-priority");
+
     name.value = null;
     notes.value = null;
     date.value = null;
-    priority.value = null;
 }

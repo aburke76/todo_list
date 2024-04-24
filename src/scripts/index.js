@@ -8,6 +8,7 @@ import {
     clearProjectModal,
     defaultTask,
     projectList,
+    changeProjectTasksDisplay,
 } from "../scripts/manageProject";
 import {
     closeTaskModal,
@@ -19,6 +20,7 @@ import {
     deleteTask,
     findTaskList,
     activeProject,
+    selectAllTasks,
 } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
@@ -27,7 +29,7 @@ const closeProject = document.querySelector("#close-project-modal");
 const closeTask = document.querySelector("#close-task-modal");
 const newTaskBtn = document.querySelector("#add-task-btn");
 const submitTask = document.querySelector("#submit-task");
-const projectContent = document.querySelector("#project-content");
+const projectNames = document.querySelectorAll(".project-name");
 
 newProject.addEventListener("click", () => {
     openProjectModal();
@@ -56,26 +58,12 @@ closeTask.addEventListener("click", () => {
     closeTaskModal();
 });
 
+// projectNames.forEach((project) => {
+//     project.addEventListener("click", () => {
+//         showAllTasks();
+//     });
+// });
+
 displayProject();
-const projects = document.querySelectorAll(".project-name");
-
-projects.forEach((project) => {
-    project.addEventListener("click", () => {
-        if (project.classList.value.includes("active")) {
-            return;
-        }
-        if (!project.classList.value.includes("active")) {
-            projects.forEach((project) => {
-                if (project.classList.value.includes("active")) {
-                    project.classList.remove("active");
-                }
-            });
-            project.classList.add("active");
-            showAllTasks();
-        }
-    });
-});
-
+// showAllTasks();
 closeProjectModal();
-
-console.log(activeProject());

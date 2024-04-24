@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { displayProject } from "./displayProject";
-import { createTask } from "./manageTask";
+import { displayProject, showAllTasks } from "./displayProject";
+import { createTask, findTaskList } from "./manageTask";
 
 class ProjectManager {
     allProjects = [];
@@ -46,13 +46,10 @@ export class Task {
     }
 }
 
-// const defaultTask = new Task("A", "B", "01/01/1998", "High");
-
 export const projectList = new ProjectManager();
 
 const defaultProject = new Project("Default");
 projectList.addProject(defaultProject);
-// defaultProject.addTask(defaultTask);
 
 export function openProjectModal() {
     const modal = document.querySelector("#project-modal");
@@ -64,7 +61,7 @@ export function closeProjectModal() {
     modal.close();
 }
 
-function clearProjectModal() {
+export function clearProjectModal() {
     const userInput = document.querySelector("#project-title");
     userInput.value = null;
 }
@@ -74,6 +71,9 @@ export function createProject() {
     const newProject = new Project(userInput.value);
     projectList.addProject(newProject);
     displayProject();
+    const userInputString = userInput.value;
+    const newProjectString = JSON.stringify(newProject);
+    localStorage.setItem(userInputString, newProjectString);
     clearProjectModal();
     closeProjectModal();
 }
@@ -91,3 +91,38 @@ export function deleteProject(projectId) {
         }
     });
 }
+
+export function changeProjectTasksDisplay() {
+    const projects = document.querySelectorAll(".project-name");
+    const projectContent = document.querySelector("#project-content");
+    projects.forEach((project) => {
+        project.addEventListener("click", () => {
+            //get rid of ACTIVE class and go by h3.id
+        });
+        while (projectContent.lastElementChild) {
+            projectContent.removeChild(projectContent.lastElementChild);
+        }
+        showAllTasks();
+    });
+}
+
+// export const importProjectsFromLocalStorage = (key) => {
+//   const allProjects = JSON.parse(localStorage.getItem(key));
+//   if(!allProjects){
+//     // if there is nothing stored in localStorage,
+//     return [];
+//   }
+//   // here, we have an array of generic objects.
+//   //  we likely want to .map() over that array, and tell
+//   //  them that they are `Project` objects instead
+//   allProjects = allProjects.map( (genericObject) =>{
+//     const project = /* can we create a Project, using data from that `genericOject`? */
+//     project.tasks = /* can we create an array of Task objects from those generic objects in .tasks? */
+//     return project;
+//   })
+//   // if we did that map right, we have an array of Project things!
+//   return allProjects;
+// }
+
+// export const exportProjectsToLocalStorage = (key, thingToSave) =>
+//     localStorage.setItem(key, JSON.stringify(thingToSave));

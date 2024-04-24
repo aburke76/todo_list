@@ -1,5 +1,10 @@
 import { projectList } from "./manageProject";
-import { findTask, deleteTask, activeProject } from "./manageTask";
+import {
+    findTask,
+    deleteTask,
+    activeProject,
+    findTaskList,
+} from "./manageTask";
 
 export function displayTask() {
     const projectContent = document.querySelector("#project-content");
@@ -15,8 +20,10 @@ export function displayTask() {
     const taskPriority = document.createElement("div");
     const delBtn = document.createElement("button");
     delBtn.classList.add("task-del-btn");
+    const i = document.createElement("i");
+    i.classList.add("fa-solid", "fa-minus", "fa-2xl");
+    delBtn.append(i);
     delBtn.setAttribute("id", currentTask.taskId);
-    delBtn.innerHTML = "<i class='fa-solid fa-minus fa-2xl'></i>";
 
     taskName.textContent = currentTask.name;
     taskNotes.textContent = currentTask.notes;
@@ -29,10 +36,4 @@ export function displayTask() {
     delBtn.addEventListener("click", () => {
         deleteTask(currentTask.taskId);
     });
-}
-
-export function selectAllTasks() {
-    const currentProject = activeProject();
-    projectTasks = currentProject.taskList;
-    return projectTasks;
 }
