@@ -3,10 +3,13 @@ import {
     projectList,
     deleteProject,
     changeProjectTasksDisplay,
+    allProjectsInactive,
 } from "./manageProject";
+import { clearAllTasks, displayAllTasks } from "./displayTask";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
+    const projectH3 = document.querySelector("#project-h3");
 
     const currentProject = projectList.allProjects.length - 1;
     const currentProjectId = projectList.allProjects[currentProject].id;
@@ -27,6 +30,23 @@ export function displayProject() {
     i.classList.add("fa-solid", "fa-minus", "fa-2xl");
     delBtn.append(i);
     projectDiv.append(delBtn);
+
+    projectName.addEventListener("click", (target) => {
+        const clickedProject = target.target;
+        console.log(clickedProject);
+        allProjectsInactive();
+        console.table(projectList.allProjects);
+        projectList.allProjects.forEach((project) => {
+            console.log("projectID", project.id);
+            console.log("clicked ID", clickedProject.id);
+            if (project.id === clickedProject.id) {
+                project.active = true;
+                clearAllTasks();
+                displayAllTasks();
+                projectH3.textContent = clickedProject.textContent;
+            }
+        });
+    });
 
     delBtn.addEventListener("click", () => {
         deleteProject(currentProjectId);

@@ -93,6 +93,11 @@ export function deleteProject(projectId) {
     });
 }
 
+export function getAllProjectNames() {
+    const projectNames = document.querySelectorAll(".project-name");
+    return projectNames;
+}
+
 export function allProjectsInactive() {
     projectList.allProjects.forEach((project) => {
         project.active = false;

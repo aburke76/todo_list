@@ -4,6 +4,7 @@ import {
     deleteTask,
     activeProject,
     findTaskList,
+    selectAllTasks,
 } from "./manageTask";
 
 export function displayTask() {
@@ -39,6 +40,7 @@ export function displayTask() {
 }
 
 export function displayAllTasks() {
+    const currentTask = findTask();
     const taskList = selectAllTasks();
     const projectContent = document.querySelector("#project-content");
     taskList.forEach((task) => {
@@ -66,5 +68,12 @@ export function displayAllTasks() {
         delBtn.addEventListener("click", () => {
             deleteTask(currentTask.taskId);
         });
+    });
+}
+
+export function clearAllTasks() {
+    const taskDivs = document.querySelectorAll(".task-div");
+    taskDivs.forEach((el) => {
+        el.remove();
     });
 }
