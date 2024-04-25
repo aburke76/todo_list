@@ -16,7 +16,7 @@ class ProjectManager {
 }
 
 export class Project {
-    constructor(name, active, id = uuidv4()) {
+    constructor(name, active = false, id = uuidv4()) {
         this.name = name;
         this.taskList = [];
         this.active = active;
@@ -93,19 +93,24 @@ export function deleteProject(projectId) {
     });
 }
 
-export function changeProjectTasksDisplay() {
-    const projects = document.querySelectorAll(".project-name");
-    const projectContent = document.querySelector("#project-content");
-    projects.forEach((project) => {
-        project.addEventListener("click", () => {
-            //get rid of ACTIVE class and go by h3.id
-        });
-        while (projectContent.lastElementChild) {
-            projectContent.removeChild(projectContent.lastElementChild);
-        }
-        showAllTasks();
+export function allProjectsInactive() {
+    projectList.allProjects.forEach((project) => {
+        project.active = false;
     });
 }
+
+// export function changeProjectTasksDisplay() {
+//     const projects = document.querySelectorAll(".project-name");
+//     const projectContent = document.querySelector("#project-content");
+//     projects.forEach((project) => {
+//         project.addEventListener("click", () => {
+//         });
+//         while (projectContent.lastElementChild) {
+//             projectContent.removeChild(projectContent.lastElementChild);
+//         }
+//         showAllTasks();
+//     });
+// }
 
 // export const importProjectsFromLocalStorage = (key) => {
 //   const allProjects = JSON.parse(localStorage.getItem(key));

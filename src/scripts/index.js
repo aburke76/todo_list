@@ -1,6 +1,6 @@
 import "../styles.css";
-import { displayProject, showAllTasks } from "./displayProject";
-import { displayTask, removeTask } from "./displayTask";
+import { displayProject } from "./displayProject";
+import { displayTask, removeTask, displayAllTasks } from "./displayTask";
 import {
     createProject,
     openProjectModal,
@@ -9,6 +9,7 @@ import {
     defaultTask,
     projectList,
     changeProjectTasksDisplay,
+    allProjectsInactive,
 } from "../scripts/manageProject";
 import {
     closeTaskModal,
@@ -21,6 +22,7 @@ import {
     findTaskList,
     activeProject,
     selectAllTasks,
+    findProject,
 } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
@@ -29,7 +31,6 @@ const closeProject = document.querySelector("#close-project-modal");
 const closeTask = document.querySelector("#close-task-modal");
 const newTaskBtn = document.querySelector("#add-task-btn");
 const submitTask = document.querySelector("#submit-task");
-const projectNames = document.querySelectorAll(".project-name");
 
 newProject.addEventListener("click", () => {
     openProjectModal();
@@ -38,6 +39,7 @@ newProject.addEventListener("click", () => {
 submitProject.addEventListener("submit", (e) => {
     e.preventDefault();
     createProject();
+    console.table(projectList.allProjects);
 });
 
 closeProject.addEventListener("click", () => {
@@ -58,12 +60,16 @@ closeTask.addEventListener("click", () => {
     closeTaskModal();
 });
 
-// projectNames.forEach((project) => {
-//     project.addEventListener("click", () => {
-//         showAllTasks();
-//     });
-// });
-
 displayProject();
-// showAllTasks();
+const projectNames = document.querySelectorAll(".project-name");
+console.log(projectNames);
+
+projectNames.forEach((name) => {
+    name.addEventListener("click", () => {
+        // allProjectsInactive();
+    });
+    console.table(projectList.allProjects);
+});
+
+// displayAllTasks();
 closeProjectModal();
