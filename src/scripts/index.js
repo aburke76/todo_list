@@ -4,7 +4,6 @@ import {
     createProject,
     openProjectModal,
     closeProjectModal,
-    clearProjectModal,
 } from "../scripts/manageProject";
 import {
     closeTaskModal,

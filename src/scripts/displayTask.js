@@ -1,11 +1,4 @@
-import { projectList } from "./manageProject";
-import {
-    findTask,
-    deleteTask,
-    activeProject,
-    findTaskList,
-    selectAllTasks,
-} from "./manageTask";
+import { findTask, deleteTask, selectAllTasks } from "./manageTask";
 
 export function displayTask() {
     const projectContent = document.querySelector("#project-content");

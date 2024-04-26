@@ -1,8 +1,6 @@
-import { selectAllTasks, deleteTask } from "./manageTask";
 import {
     projectList,
     deleteProject,
-    changeProjectTasksDisplay,
     allProjectsInactive,
 } from "./manageProject";
 import { clearAllTasks, displayAllTasks } from "./displayTask";
@@ -33,12 +31,8 @@ export function displayProject() {
 
     projectName.addEventListener("click", (target) => {
         const clickedProject = target.target;
-        console.log(clickedProject);
         allProjectsInactive();
-        console.table(projectList.allProjects);
         projectList.allProjects.forEach((project) => {
-            console.log("projectID", project.id);
-            console.log("clicked ID", clickedProject.id);
             if (project.id === clickedProject.id) {
                 project.active = true;
                 clearAllTasks();
@@ -53,5 +47,4 @@ export function displayProject() {
     });
 
     sidebarContent.append(projectDiv);
-    // changeProjectTasksDisplay();
 }

@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { displayProject, showAllTasks } from "./displayProject";
-import { createTask, findTaskList } from "./manageTask";
+import { displayProject } from "./displayProject";
 
 class ProjectManager {
     allProjects = [];
@@ -72,9 +71,6 @@ export function createProject() {
     const newProject = new Project(userInput.value);
     projectList.addProject(newProject);
     displayProject();
-    const userInputString = userInput.value;
-    const newProjectString = JSON.stringify(newProject);
-    localStorage.setItem(userInputString, newProjectString);
     clearProjectModal();
     closeProjectModal();
 }
@@ -103,19 +99,6 @@ export function allProjectsInactive() {
         project.active = false;
     });
 }
-
-// export function changeProjectTasksDisplay() {
-//     const projects = document.querySelectorAll(".project-name");
-//     const projectContent = document.querySelector("#project-content");
-//     projects.forEach((project) => {
-//         project.addEventListener("click", () => {
-//         });
-//         while (projectContent.lastElementChild) {
-//             projectContent.removeChild(projectContent.lastElementChild);
-//         }
-//         showAllTasks();
-//     });
-// }
 
 // export const importProjectsFromLocalStorage = (key) => {
 //   const allProjects = JSON.parse(localStorage.getItem(key));

@@ -1,5 +1,5 @@
-import { projectList, Task, Project, deleteProject } from "./manageProject";
-import { displayTask, removeTask } from "./displayTask";
+import { projectList, Task } from "./manageProject";
+import { displayTask } from "./displayTask";
 
 export function openTaskModal() {
     const modal = document.querySelector("#task-modal");
@@ -43,7 +43,6 @@ export function activeProject() {
 }
 
 function addTask(task) {
-    // const activeProject = activeProject();
     for (let i = 0; i < projectList.allProjects.length; i++) {
         if (projectList.allProjects[i].id === activeProject().id) {
             projectList.allProjects[i].addTask(task);
@@ -52,7 +51,6 @@ function addTask(task) {
 }
 
 export function findTaskList() {
-    // const activeProject = activeProject();
     let selectedProject;
     let currentTaskList;
     for (let i = 0; i < projectList.allProjects.length; i++) {
@@ -65,7 +63,6 @@ export function findTaskList() {
 }
 
 export function findTask() {
-    // const activeProject = activeProject();
     let selectedProject;
     let currentTask;
     for (let i = 0; i < projectList.allProjects.length; i++) {
@@ -89,7 +86,6 @@ export function findTask() {
 }
 
 export function findProject() {
-    // const activeProject = activeProject();
     let currentProject;
     for (let i = 0; i < projectList.allProjects.length; i++) {
         if (projectList.allProjects[i].id === activeProject().id) {
@@ -119,8 +115,7 @@ export function deleteTask(taskId) {
     const taskDivs = document.querySelectorAll(".task-div");
     taskDivs.forEach((div) => {
         if (div.id === selectedTaskId) {
-            console.log("it should remove it from DOM"); //FIGURE OUT WHY
-            //IT WONT REMOVE
+            console.log("it should remove it from DOM");
             div.remove();
         }
     });
