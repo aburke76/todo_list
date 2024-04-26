@@ -39,6 +39,7 @@ export function displayAllTasks() {
     taskList.forEach((task) => {
         const taskDiv = document.createElement("div");
         taskDiv.classList.add("task-div");
+        taskDiv.setAttribute("id", task.taskId);
         const taskName = document.createElement("h3");
         const taskNotes = document.createElement("div");
         const taskDate = document.createElement("div");
@@ -59,7 +60,7 @@ export function displayAllTasks() {
         projectContent.append(taskDiv);
 
         delBtn.addEventListener("click", () => {
-            deleteTask(currentTask.taskId);
+            deleteTask(task.taskId);
         });
     });
 }

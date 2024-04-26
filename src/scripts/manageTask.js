@@ -115,7 +115,6 @@ export function deleteTask(taskId) {
     const taskDivs = document.querySelectorAll(".task-div");
     taskDivs.forEach((div) => {
         if (div.id === selectedTaskId) {
-            console.log("it should remove it from DOM");
             div.remove();
         }
     });
