@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { displayProject } from "./displayProject";
+import { displayProject, updateProjectTaskDisplay } from "./displayProject";
 
 class ProjectManager {
     allProjects = [];

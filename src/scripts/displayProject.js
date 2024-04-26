@@ -47,4 +47,7 @@ export function displayProject() {
     });
 
     sidebarContent.append(projectDiv);
+    displayAllTasks();
 }
+
+//MAKE IT SO THE NEWEST PROJECT IS DISPLAYED
