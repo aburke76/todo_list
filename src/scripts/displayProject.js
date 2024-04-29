@@ -68,4 +68,15 @@ export function displayNewestProject() {
     });
 }
 
-//MAKE IT SO THE NEWEST PROJECT IS DISPLAYED
+export function displayActiveProject() {
+    const projectH3 = document.querySelector("#project-h3");
+    allProjectsInactive();
+    projectList.allProjects[0].active = true;
+    projectList.allProjects.forEach((project) => {
+        if (project.id === projectList.allProjects[0].id) {
+            clearAllTasks();
+            displayAllTasks();
+            projectH3.textContent = projectList.allProjects[0].name;
+        }
+    });
+}

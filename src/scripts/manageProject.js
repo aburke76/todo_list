@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import {
     displayNewestProject,
     displayProject,
-    updateProjectTaskDisplay,
+    displayActiveProject,
 } from "./displayProject";
 
 class ProjectManager {
@@ -92,6 +92,7 @@ export function deleteProject(projectId) {
             element.remove();
         }
     });
+    displayActiveProject();
 }
 
 // export function getAllProjectNames() {

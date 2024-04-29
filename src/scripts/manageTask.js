@@ -1,6 +1,6 @@
-import { projectList, Task } from "./manageProject";
+import { allProjectsInactive, projectList, Task } from "./manageProject";
 import { displayTask } from "./displayTask";
-
+import { displayActiveProject } from "./displayProject";
 export function openTaskModal() {
     const modal = document.querySelector("#task-modal");
     modal.showModal();

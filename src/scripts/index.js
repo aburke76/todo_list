@@ -36,7 +36,7 @@ newTaskBtn.addEventListener("click", () => {
     openTaskModal();
 });
 
-submitTask.addEventListener("submit", (e) => {
+submitTask.addEventListener("click", (e) => {
     e.preventDefault();
     createTask();
 });
