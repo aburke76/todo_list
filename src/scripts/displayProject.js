@@ -4,6 +4,7 @@ import {
     allProjectsInactive,
 } from "./manageProject";
 import { clearAllTasks, displayAllTasks } from "./displayTask";
+import { activeProject } from "./manageTask";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
@@ -48,6 +49,23 @@ export function displayProject() {
 
     sidebarContent.append(projectDiv);
     displayAllTasks();
+}
+
+export function displayNewestProject() {
+    const projectH3 = document.querySelector("#project-h3");
+
+    allProjectsInactive();
+
+    const newestProjectIndex = projectList.allProjects.length - 1;
+    projectList.allProjects[newestProjectIndex].active = true;
+    projectList.allProjects.forEach((project) => {
+        if (project.id === projectList.allProjects[newestProjectIndex].id) {
+            clearAllTasks();
+            displayAllTasks();
+            projectH3.textContent =
+                projectList.allProjects[newestProjectIndex].name;
+        }
+    });
 }
 
 //MAKE IT SO THE NEWEST PROJECT IS DISPLAYED

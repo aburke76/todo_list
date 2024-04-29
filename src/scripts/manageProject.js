@@ -1,5 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import { displayProject, updateProjectTaskDisplay } from "./displayProject";
+import {
+    displayNewestProject,
+    displayProject,
+    updateProjectTaskDisplay,
+} from "./displayProject";
 
 class ProjectManager {
     allProjects = [];
@@ -73,6 +77,7 @@ export function createProject() {
     displayProject();
     clearProjectModal();
     closeProjectModal();
+    displayNewestProject();
 }
 
 export function deleteProject(projectId) {
