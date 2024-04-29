@@ -10,6 +10,7 @@ export function displayTask() {
 
     const taskName = document.createElement("h3");
     const taskNotes = document.createElement("div");
+    taskNotes.classList.add("notes");
     const taskDate = document.createElement("div");
     const taskPriority = document.createElement("div");
     const delBtn = document.createElement("button");
@@ -23,6 +24,9 @@ export function displayTask() {
     taskNotes.textContent = currentTask.notes;
     taskDate.textContent = currentTask.dueDate;
     taskPriority.textContent = currentTask.priority;
+
+    taskPriority.setAttribute("id", taskPriority.textContent.toLowerCase());
+    taskPriority.classList.add("priority");
 
     taskDiv.append(taskName, taskNotes, taskDate, taskPriority, delBtn);
     projectContent.append(taskDiv);
@@ -42,8 +46,10 @@ export function displayAllTasks() {
         taskDiv.setAttribute("id", task.taskId);
         const taskName = document.createElement("h3");
         const taskNotes = document.createElement("div");
+        taskNotes.classList.add("notes");
         const taskDate = document.createElement("div");
         const taskPriority = document.createElement("div");
+
         const delBtn = document.createElement("button");
         delBtn.classList.add("task-del-btn");
         const i = document.createElement("i");
@@ -55,6 +61,9 @@ export function displayAllTasks() {
         taskNotes.textContent = task.notes;
         taskDate.textContent = task.dueDate;
         taskPriority.textContent = task.priority;
+
+        taskPriority.setAttribute("id", taskPriority.textContent.toLowerCase());
+        taskPriority.classList.add("priority");
 
         taskDiv.append(taskName, taskNotes, taskDate, taskPriority, delBtn);
         projectContent.append(taskDiv);

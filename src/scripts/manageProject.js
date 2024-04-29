@@ -44,7 +44,7 @@ export class Task {
     constructor(name, notes, dueDate, priority, taskId = uuidv4()) {
         this.name = name;
         this.notes = notes;
-        this.dueDate = dueDate;
+        this.dueDate = `Due: ${dueDate}`;
         this.priority = priority;
         this.taskId = taskId;
     }

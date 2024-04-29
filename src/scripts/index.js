@@ -4,6 +4,7 @@ import {
     createProject,
     openProjectModal,
     closeProjectModal,
+    projectList,
 } from "../scripts/manageProject";
 import {
     closeTaskModal,
@@ -23,7 +24,7 @@ newProject.addEventListener("click", () => {
     openProjectModal();
 });
 
-submitProject.addEventListener("submit", (e) => {
+submitProject.addEventListener("click", (e) => {
     e.preventDefault();
     createProject();
 });
@@ -33,7 +34,12 @@ closeProject.addEventListener("click", () => {
 });
 
 newTaskBtn.addEventListener("click", () => {
-    openTaskModal();
+    if (projectList.allProjects.length === 0) {
+        alert("Create a project first!");
+        openProjectModal();
+    } else {
+        openTaskModal();
+    }
 });
 
 submitTask.addEventListener("click", (e) => {

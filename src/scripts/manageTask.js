@@ -1,4 +1,4 @@
-import { projectList, Task } from "./manageProject";
+import { openProjectModal, projectList, Task } from "./manageProject";
 import { displayTask } from "./displayTask";
 
 export function openTaskModal() {

@@ -45,7 +45,6 @@ export function displayProject() {
     delBtn.addEventListener("click", () => {
         clearAllTasks();
         deleteProject(currentProjectId);
-        console.log(projectList.allProjects.length);
     });
 
     sidebarContent.append(projectDiv);
