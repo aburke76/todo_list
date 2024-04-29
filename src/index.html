@@ -21,7 +21,7 @@
         <dialog id="project-modal">
             <span class="close" id="close-project-modal">&times;</span>
             <h2>New Project</h2>
-            <form id="project-form">
+            <form id="project-form" onsubmit="event.preventDefault();">
                 <label for="project-title"></label>
                 <input
                     required
@@ -36,7 +36,7 @@
         <dialog id="task-modal">
             <span id="close-task-modal" class="close">&times;</span>
             <h2>New Task</h2>
-            <form id="task-form">
+            <form id="task-form" onsubmit="event.preventDefault()">
                 <label for="task-name">Task Name</label>
                 <input required type="text" name="task-name" id="task-name" />
                 <label for="task-notes">Notes</label>

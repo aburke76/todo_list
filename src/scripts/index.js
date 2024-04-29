@@ -23,7 +23,7 @@ newProject.addEventListener("click", () => {
     openProjectModal();
 });
 
-submitProject.addEventListener("submit", (e) => {
+submitProject.addEventListener("click", (e) => {
     e.preventDefault();
     createProject();
 });
