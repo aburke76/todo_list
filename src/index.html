@@ -38,7 +38,7 @@
             <h2>New Task</h2>
             <form id="task-form">
                 <label for="task-name">Task Name</label>
-                <input type="text" name="task-name" id="task-name" />
+                <input required type="text" name="task-name" id="task-name" />
                 <label for="task-notes">Notes</label>
                 <textarea
                     name="task-notes"
@@ -50,6 +50,7 @@
                 <input type="date" name="task-dd" id="task-dd" />
                 <label for="task-priority">Priority</label>
                 <select name="task-priority" id="task-priority">
+                    <option value="" selected></option>
                     <option value="low" id="low">Low</option>
                     <option value="medium" id="medium">Medium</option>
                     <option value="high" id="high">High</option>

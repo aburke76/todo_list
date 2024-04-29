@@ -196,6 +196,7 @@ option {
     border: transparent;
     border-radius: 5px;
     padding: 5px;
+    font-family: "DM Sans";
 }
 
 #task-modal {
@@ -262,6 +263,7 @@ option {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
     box-shadow: 3px 3px 10px;
     border-radius: 0.5em;
     background-color: var(--gray-blue);
