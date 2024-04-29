@@ -4,6 +4,7 @@ import {
     displayProject,
     displayActiveProject,
 } from "./displayProject";
+import { format, parse } from "date-fns";
 
 class ProjectManager {
     allProjects = [];
@@ -44,7 +45,7 @@ export class Task {
     constructor(name, notes, dueDate, priority, taskId = uuidv4()) {
         this.name = name;
         this.notes = notes;
-        this.dueDate = `Due: ${dueDate}`;
+        this.dueDate = "Due: " + format(parse(dueDate), "MM/dd/yyyy");
         this.priority = priority;
         this.taskId = taskId;
     }
