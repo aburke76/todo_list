@@ -74,10 +74,10 @@ export function createProject() {
     const userInput = document.querySelector("#project-title");
     const newProject = new Project(userInput.value);
     projectList.addProject(newProject);
-    displayProject();
     clearProjectModal();
     closeProjectModal();
     displayNewestProject();
+    displayProject();
 }
 
 export function deleteProject(projectId) {

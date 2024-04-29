@@ -4,7 +4,6 @@ import {
     allProjectsInactive,
 } from "./manageProject";
 import { clearAllTasks, displayAllTasks } from "./displayTask";
-import { activeProject } from "./manageTask";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
@@ -44,7 +43,9 @@ export function displayProject() {
     });
 
     delBtn.addEventListener("click", () => {
+        clearAllTasks();
         deleteProject(currentProjectId);
+        console.log(projectList.allProjects.length);
     });
 
     sidebarContent.append(projectDiv);
@@ -70,13 +71,17 @@ export function displayNewestProject() {
 
 export function displayActiveProject() {
     const projectH3 = document.querySelector("#project-h3");
-    allProjectsInactive();
-    projectList.allProjects[0].active = true;
-    projectList.allProjects.forEach((project) => {
-        if (project.id === projectList.allProjects[0].id) {
-            clearAllTasks();
-            displayAllTasks();
-            projectH3.textContent = projectList.allProjects[0].name;
-        }
-    });
+    if (projectList.allProjects.length === 0) {
+        projectH3.textContent = "";
+    } else {
+        allProjectsInactive();
+        projectList.allProjects[0].active = true;
+        clearAllTasks();
+        projectList.allProjects.forEach((project) => {
+            if (project.id === projectList.allProjects[0].id) {
+                displayAllTasks();
+                projectH3.textContent = projectList.allProjects[0].name;
+            }
+        });
+    }
 }
