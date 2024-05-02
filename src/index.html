@@ -22,14 +22,14 @@
             <span class="close" id="close-project-modal">&times;</span>
             <h2>New Project</h2>
             <form id="project-form">
-                <label for="project-title"></label>
+                <label for="project-title" id="project-label"></label>
                 <input
-                    required
                     type="text"
                     name="project-title"
                     id="project-title"
+                    required
                 />
-                <button type="submit" id="submit-project">Create</button>
+                <button type="button" id="submit-project">Create</button>
             </form>
         </dialog>
 
@@ -37,7 +37,7 @@
             <span id="close-task-modal" class="close">&times;</span>
             <h2>New Task</h2>
             <form id="task-form">
-                <label for="task-name">Task Name</label>
+                <label for="task-name" id="task-title">Task Name</label>
                 <input type="text" name="task-name" id="task-name" required />
                 <label for="task-notes">Notes</label>
                 <textarea
@@ -46,7 +46,7 @@
                     cols="12"
                     rows="4"
                 ></textarea>
-                <label for="task-dd">Due Date</label>
+                <label for="task-dd" id="task-date">Due Date</label>
                 <input type="date" name="task-dd" id="task-dd" required />
                 <label for="task-priority">Priority</label>
                 <select name="task-priority" id="task-priority">
@@ -55,7 +55,7 @@
                     <option value="Medium" id="medium">Medium</option>
                     <option value="High" id="high">High</option>
                 </select>
-                <button type="submit" id="submit-task">Create</button>
+                <button type="button" id="submit-task">Create</button>
             </form>
         </dialog>
 

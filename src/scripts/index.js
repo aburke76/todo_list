@@ -14,7 +14,7 @@ import {
 } from "../scripts/manageTask";
 
 const newProject = document.querySelector("#add-project");
-const submitProject = document.querySelector("#project-form");
+const submitProject = document.querySelector("#submit-project");
 const closeProject = document.querySelector("#close-project-modal");
 const closeTask = document.querySelector("#close-task-modal");
 const newTaskBtn = document.querySelector("#add-task-btn");
@@ -24,9 +24,14 @@ newProject.addEventListener("click", () => {
     openProjectModal();
 });
 
-submitProject.addEventListener("submit", (e) => {
+submitProject.addEventListener("click", (e) => {
+    const form = document.querySelector("#project-form");
     e.preventDefault();
-    createProject();
+    if (form.checkValidity() === false) {
+        alert("Please fill out required fields.");
+    } else {
+        createProject();
+    }
 });
 
 closeProject.addEventListener("click", () => {
@@ -42,9 +47,14 @@ newTaskBtn.addEventListener("click", () => {
     }
 });
 
-submitTask.addEventListener("submit", (e) => {
+submitTask.addEventListener("click", (e) => {
+    const form = document.querySelector("#task-form");
     e.preventDefault();
-    createTask();
+    if (form.checkValidity() === false) {
+        alert("Please fill out required fields.");
+    } else {
+        createTask();
+    }
 });
 
 closeTask.addEventListener("click", () => {

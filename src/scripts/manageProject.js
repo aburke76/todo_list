@@ -42,12 +42,12 @@ export class Project {
     }
 }
 const today = new Date().toISOString().slice(0, 10);
-console.log(today);
+
 export class Task {
     constructor(name, notes, dueDate = today, priority, taskId = uuidv4()) {
         this.name = name;
         this.notes = notes;
-        this.dueDate = "Due: " + formatDate(dueDate);
+        this.dueDate = formatDate(dueDate);
         this.priority = priority;
         this.taskId = taskId;
     }

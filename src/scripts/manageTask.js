@@ -1,6 +1,5 @@
-import { openProjectModal, projectList, Task } from "./manageProject";
+import { projectList, Task } from "./manageProject";
 import { displayTask } from "./displayTask";
-import { parse, format } from "date-fns";
 
 export function openTaskModal() {
     const modal = document.querySelector("#task-modal");
@@ -26,8 +25,8 @@ export function createTask() {
     );
     activeProject();
     addTask(newTask);
-    closeTaskModal();
     clearTaskModal();
+    closeTaskModal();
     displayTask(newTask);
 }
 
