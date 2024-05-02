@@ -4,8 +4,7 @@ import {
     displayProject,
     displayActiveProject,
 } from "./displayProject";
-import { parse, format, parseISO } from "date-fns";
-import { formatRelative } from "date-fns/formatRelative";
+import { format, parseISO } from "date-fns";
 
 class ProjectManager {
     allProjects = [];

@@ -28,10 +28,15 @@ submitProject.addEventListener("click", (e) => {
     const form = document.querySelector("#project-form");
     e.preventDefault();
     if (form.checkValidity() === false) {
-        alert("Please fill out required fields.");
+        form.reportValidity();
     } else {
         createProject();
     }
+});
+
+const form = document.querySelector("#project-form");
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
 });
 
 closeProject.addEventListener("click", () => {
@@ -51,7 +56,7 @@ submitTask.addEventListener("click", (e) => {
     const form = document.querySelector("#task-form");
     e.preventDefault();
     if (form.checkValidity() === false) {
-        alert("Please fill out required fields.");
+        form.reportValidity();
     } else {
         createTask();
     }
