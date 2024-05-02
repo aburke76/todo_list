@@ -13,12 +13,23 @@ export function displayTask() {
     taskNotes.classList.add("notes");
     const taskDate = document.createElement("div");
     const taskPriority = document.createElement("div");
+
+    const checkBtn = document.createElement("button");
+    checkBtn.classList.add("check-btn");
+    const checkIcon = document.createElement("i");
+    checkIcon.classList.add("fa-solid", "fa-check", "fa-2xl");
+    checkBtn.append(checkIcon);
+    checkBtn.setAttribute("id", currentTask.taskId);
+
     const delBtn = document.createElement("button");
     delBtn.classList.add("task-del-btn");
-    const i = document.createElement("i");
-    i.classList.add("fa-solid", "fa-minus", "fa-2xl");
-    delBtn.append(i);
+    const delIcon = document.createElement("i");
+    delIcon.classList.add("fa-solid", "fa-minus", "fa-2xl");
+    delBtn.append(delIcon);
     delBtn.setAttribute("id", currentTask.taskId);
+
+    const btns = document.createElement("div");
+    btns.classList.add("btns");
 
     taskName.textContent = currentTask.name;
     taskNotes.textContent = currentTask.notes;
@@ -28,8 +39,13 @@ export function displayTask() {
     taskPriority.setAttribute("id", taskPriority.textContent.toLowerCase());
     taskPriority.classList.add("priority");
 
-    taskDiv.append(taskName, taskNotes, taskDate, taskPriority, delBtn);
+    btns.append(checkBtn, delBtn);
+    taskDiv.append(taskName, taskNotes, taskDate, taskPriority, btns);
     projectContent.append(taskDiv);
+
+    checkBtn.addEventListener("click", () => {
+        completeTask(taskDiv);
+    });
 
     delBtn.addEventListener("click", () => {
         deleteTask(currentTask.taskId);
@@ -50,12 +66,22 @@ export function displayAllTasks() {
         const taskDate = document.createElement("div");
         const taskPriority = document.createElement("div");
 
+        const checkBtn = document.createElement("button");
+        checkBtn.classList.add("check-btn");
+        const checkIcon = document.createElement("i");
+        checkIcon.classList.add("fa-solid", "fa-check", "fa-2xl");
+        checkBtn.append(checkIcon);
+        checkBtn.setAttribute("id", task.taskId);
+
         const delBtn = document.createElement("button");
         delBtn.classList.add("task-del-btn");
-        const i = document.createElement("i");
-        i.classList.add("fa-solid", "fa-minus", "fa-2xl");
-        delBtn.append(i);
+        const delIcon = document.createElement("i");
+        delIcon.classList.add("fa-solid", "fa-minus", "fa-2xl");
+        delBtn.append(delIcon);
         delBtn.setAttribute("id", task.taskId);
+
+        const btns = document.createElement("div");
+        btns.classList.add("btns");
 
         taskName.textContent = task.name;
         taskNotes.textContent = task.notes;
@@ -65,8 +91,13 @@ export function displayAllTasks() {
         taskPriority.setAttribute("id", taskPriority.textContent.toLowerCase());
         taskPriority.classList.add("priority");
 
-        taskDiv.append(taskName, taskNotes, taskDate, taskPriority, delBtn);
+        btns.append(checkBtn, delBtn);
+        taskDiv.append(taskName, taskNotes, taskDate, taskPriority, btns);
         projectContent.append(taskDiv);
+
+        checkBtn.addEventListener("click", () => {
+            completeTask(taskDiv);
+        });
 
         delBtn.addEventListener("click", () => {
             deleteTask(task.taskId);
@@ -79,4 +110,12 @@ export function clearAllTasks() {
     taskDivs.forEach((el) => {
         el.remove();
     });
+}
+
+function completeTask(element) {
+    if (element.classList.contains("task-complete")) {
+        element.classList.remove("task-complete");
+    } else {
+        element.classList.add("task-complete");
+    }
 }

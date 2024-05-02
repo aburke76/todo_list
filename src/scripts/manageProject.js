@@ -4,7 +4,8 @@ import {
     displayProject,
     displayActiveProject,
 } from "./displayProject";
-import { format, parse } from "date-fns";
+import { parse, format, parseISO } from "date-fns";
+import { formatRelative } from "date-fns/formatRelative";
 
 class ProjectManager {
     allProjects = [];
@@ -40,21 +41,27 @@ export class Project {
         }
     }
 }
-
+const today = new Date().toISOString().slice(0, 10);
+console.log(today);
 export class Task {
-    constructor(name, notes, dueDate, priority, taskId = uuidv4()) {
+    constructor(name, notes, dueDate = today, priority, taskId = uuidv4()) {
         this.name = name;
         this.notes = notes;
-        this.dueDate = "Due: " + format(parse(dueDate), "MM/dd/yyyy");
+        this.dueDate = "Due: " + formatDate(dueDate);
         this.priority = priority;
         this.taskId = taskId;
     }
+}
+
+function formatDate(date) {
+    return (date = format(parseISO(date), "MM/dd/yyyy"));
 }
 
 export const projectList = new ProjectManager();
 
 const defaultProject = new Project("Default", true);
 projectList.addProject(defaultProject);
+// addToLocalStorage(defaultProject);
 
 export function openProjectModal() {
     const modal = document.querySelector("#project-modal");
@@ -77,6 +84,7 @@ export function createProject() {
     projectList.addProject(newProject);
     clearProjectModal();
     closeProjectModal();
+    // addToLocalStorage(newProject);
     displayNewestProject();
     displayProject();
 }
@@ -96,34 +104,21 @@ export function deleteProject(projectId) {
     displayActiveProject();
 }
 
-// export function getAllProjectNames() {
-//     const projectNames = document.querySelectorAll(".project-name");
-//     return projectNames;
-// }
-
 export function allProjectsInactive() {
     projectList.allProjects.forEach((project) => {
         project.active = false;
     });
 }
 
-// export const importProjectsFromLocalStorage = (key) => {
-//   const allProjects = JSON.parse(localStorage.getItem(key));
-//   if(!allProjects){
-//     // if there is nothing stored in localStorage,
-//     return [];
-//   }
-//   // here, we have an array of generic objects.
-//   //  we likely want to .map() over that array, and tell
-//   //  them that they are `Project` objects instead
-//   allProjects = allProjects.map( (genericObject) =>{
-//     const project = /* can we create a Project, using data from that `genericOject`? */
-//     project.tasks = /* can we create an array of Task objects from those generic objects in .tasks? */
-//     return project;
-//   })
-//   // if we did that map right, we have an array of Project things!
-//   return allProjects;
+// export function addToLocalStorage(project) {
+//     const index = projectList.allProjects.length;
+//     const projectIndex = projectList.allProjects.indexOf(project);
+//     localStorage.setItem(
+//         `project_${index}`,
+//         JSON.stringify(projectList.allProjects[projectIndex])
+//     );
 // }
 
-// export const exportProjectsToLocalStorage = (key, thingToSave) =>
-//     localStorage.setItem(key, JSON.stringify(thingToSave));
+// export function importFromLocalStorage() {
+
+// }

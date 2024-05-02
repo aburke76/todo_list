@@ -1,5 +1,6 @@
 import { openProjectModal, projectList, Task } from "./manageProject";
 import { displayTask } from "./displayTask";
+import { parse, format } from "date-fns";
 
 export function openTaskModal() {
     const modal = document.querySelector("#task-modal");
@@ -14,19 +15,17 @@ export function closeTaskModal() {
 export function createTask() {
     const name = document.querySelector("#task-name");
     const notes = document.querySelector("#task-notes");
-    const date = document.querySelector("#task-dd");
+    const dueDate = document.querySelector("#task-dd");
     const priority = document.querySelector("#task-priority");
 
     const newTask = new Task(
         name.value,
         notes.value,
-        date.value,
+        dueDate.value,
         priority.value
     );
-
     activeProject();
     addTask(newTask);
-
     closeTaskModal();
     clearTaskModal();
     displayTask(newTask);

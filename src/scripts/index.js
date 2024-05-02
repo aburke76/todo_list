@@ -24,7 +24,7 @@ newProject.addEventListener("click", () => {
     openProjectModal();
 });
 
-submitProject.addEventListener("click", (e) => {
+submitProject.addEventListener("submit", (e) => {
     e.preventDefault();
     createProject();
 });
@@ -42,7 +42,7 @@ newTaskBtn.addEventListener("click", () => {
     }
 });
 
-submitTask.addEventListener("click", (e) => {
+submitTask.addEventListener("submit", (e) => {
     e.preventDefault();
     createTask();
 });
