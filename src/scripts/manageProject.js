@@ -5,6 +5,10 @@ import {
     displayActiveProject,
 } from "./displayProject";
 import { format, parseISO } from "date-fns";
+import {
+    importProjectsFromLocalStorage,
+    addProjectToLocalStorage,
+} from "./storage";
 
 class ProjectManager {
     allProjects = [];
@@ -43,7 +47,7 @@ export class Project {
 const today = new Date().toISOString().slice(0, 10);
 
 export class Task {
-    constructor(name, notes, dueDate = today, priority, taskId = uuidv4()) {
+    constructor(name, notes, dueDate, priority, taskId = uuidv4()) {
         this.name = name;
         this.notes = notes;
         this.dueDate = formatDate(dueDate);
@@ -60,7 +64,6 @@ export const projectList = new ProjectManager();
 
 const defaultProject = new Project("Default", true);
 projectList.addProject(defaultProject);
-// addToLocalStorage(defaultProject);
 
 export function openProjectModal() {
     const modal = document.querySelector("#project-modal");
@@ -83,9 +86,9 @@ export function createProject() {
     projectList.addProject(newProject);
     clearProjectModal();
     closeProjectModal();
-    // addToLocalStorage(newProject);
     displayNewestProject();
     displayProject();
+    addProjectToLocalStorage(newProject);
 }
 
 export function deleteProject(projectId) {
@@ -109,15 +112,6 @@ export function allProjectsInactive() {
     });
 }
 
-// export function addToLocalStorage(project) {
-//     const index = projectList.allProjects.length;
-//     const projectIndex = projectList.allProjects.indexOf(project);
-//     localStorage.setItem(
-//         `project_${index}`,
-//         JSON.stringify(projectList.allProjects[projectIndex])
-//     );
-// }
+addProjectToLocalStorage(defaultProject);
 
-// export function importFromLocalStorage() {
-
-// }
+console.log(importProjectsFromLocalStorage("project_1"));

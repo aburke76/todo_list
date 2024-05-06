@@ -12,6 +12,7 @@ import {
     openTaskModal,
     clearTaskModal,
 } from "../scripts/manageTask";
+import { importProjectsFromLocalStorage } from "./storage";
 
 const newProject = document.querySelector("#add-project");
 const submitProject = document.querySelector("#submit-project");
@@ -19,6 +20,11 @@ const closeProject = document.querySelector("#close-project-modal");
 const closeTask = document.querySelector("#close-task-modal");
 const newTaskBtn = document.querySelector("#add-task-btn");
 const submitTask = document.querySelector("#submit-task");
+
+for (let i = 1; i < projectList.allProjects.length; i++) {
+    console.log(`project_${i}`);
+    importProjectsFromLocalStorage(`project_${i}`);
+}
 
 newProject.addEventListener("click", () => {
     openProjectModal();
