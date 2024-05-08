@@ -113,5 +113,3 @@ export function allProjectsInactive() {
 }
 
 addProjectToLocalStorage(defaultProject);
-
-console.log(importProjectsFromLocalStorage("project_1"));

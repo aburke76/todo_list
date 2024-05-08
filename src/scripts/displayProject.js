@@ -84,3 +84,5 @@ export function displayActiveProject() {
         });
     }
 }
+
+export function displayImportedProjects(project) {}
