@@ -22,10 +22,10 @@ export function importProjectsFromLocalStorage() {
     }
 
     console.log(allProjects);
+    console.log(localStorage);
 
     allProjects = allProjects.map((obj) => {
         const project = new Project(obj.name);
-        console.log(project);
         project.taskList = obj.taskList.map((task) => {
             const projectTask = new Task(
                 task.name,
@@ -38,5 +38,6 @@ export function importProjectsFromLocalStorage() {
         });
         return project;
     });
+    console.log(allProjects);
     return allProjects;
 }

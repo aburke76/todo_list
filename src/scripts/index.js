@@ -71,4 +71,5 @@ closeTask.addEventListener("click", () => {
 closeProjectModal();
 closeTaskModal();
 
+importProjectsFromLocalStorage();
 displayProject();
