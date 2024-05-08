@@ -113,3 +113,4 @@ export function allProjectsInactive() {
 }
 
 addProjectToLocalStorage(defaultProject);
+console.log(localStorage);

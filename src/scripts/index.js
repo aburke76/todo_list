@@ -14,6 +14,10 @@ import {
 } from "../scripts/manageTask";
 import { importProjectsFromLocalStorage } from "./storage";
 
+window.addEventListener("load", () => {
+    localStorage.removeItem("debug");
+});
+
 const newProject = document.querySelector("#add-project");
 const submitProject = document.querySelector("#submit-project");
 const closeProject = document.querySelector("#close-project-modal");
