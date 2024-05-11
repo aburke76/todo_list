@@ -3,17 +3,15 @@ import {
     displayNewestProject,
     displayProject,
     displayActiveProject,
+    displayImportedProjects,
 } from "./displayProject";
-import { format, parseISO } from "date-fns";
-import {
-    importProjectsFromLocalStorage,
-    addProjectToLocalStorage,
-} from "./storage";
+import { addToLocalStorage, importProjectsFromLocalStorage } from "./storage";
 
 class ProjectManager {
-    allProjects = [];
+    allProjects = importProjectsFromLocalStorage();
     addProject(project) {
         this.allProjects.push(project);
+        addToLocalStorage(project);
     }
 
     removeProject(id) {
@@ -44,26 +42,22 @@ export class Project {
         }
     }
 }
-const today = new Date().toISOString().slice(0, 10);
 
 export class Task {
     constructor(name, notes, dueDate, priority, taskId = uuidv4()) {
         this.name = name;
         this.notes = notes;
-        this.dueDate = formatDate(dueDate);
+        this.dueDate = dueDate;
         this.priority = priority;
         this.taskId = taskId;
     }
 }
-
-function formatDate(date) {
-    return (date = format(parseISO(date), "MM/dd/yyyy"));
-}
-
 export const projectList = new ProjectManager();
 
-const defaultProject = new Project("Default", true);
-projectList.addProject(defaultProject);
+if (localStorage.length == 0) {
+    const defaultProject = new Project("Default", true);
+    projectList.addProject(defaultProject);
+}
 
 export function openProjectModal() {
     const modal = document.querySelector("#project-modal");
@@ -84,11 +78,11 @@ export function createProject() {
     const userInput = document.querySelector("#project-title");
     const newProject = new Project(userInput.value);
     projectList.addProject(newProject);
+
     clearProjectModal();
     closeProjectModal();
     displayNewestProject();
     displayProject();
-    addProjectToLocalStorage(newProject);
 }
 
 export function deleteProject(projectId) {
@@ -111,6 +105,3 @@ export function allProjectsInactive() {
         project.active = false;
     });
 }
-
-addProjectToLocalStorage(defaultProject);
-console.log(localStorage);

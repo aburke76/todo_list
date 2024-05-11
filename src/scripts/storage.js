@@ -3,7 +3,7 @@ import { projectList, Project } from "./manageProject";
 import { Task } from "./manageProject";
 import { displayAllTasks } from "./displayTask";
 
-export function addProjectToLocalStorage(project) {
+export function addToLocalStorage(project) {
     const index = projectList.allProjects.length;
     const projectIndex = projectList.allProjects.indexOf(project);
     localStorage.setItem(
@@ -11,19 +11,14 @@ export function addProjectToLocalStorage(project) {
         JSON.stringify(projectList.allProjects[projectIndex])
     );
 }
-
 export function importProjectsFromLocalStorage() {
     let allProjects = [];
     for (let i = 0; i < localStorage.length; i++) {
-        console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        allProjects.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
     if (!allProjects) {
         return [];
     }
-
-    console.log(allProjects);
-    console.log(localStorage);
-
     allProjects = allProjects.map((obj) => {
         const project = new Project(obj.name);
         project.taskList = obj.taskList.map((task) => {
@@ -38,6 +33,14 @@ export function importProjectsFromLocalStorage() {
         });
         return project;
     });
-    console.log(allProjects);
     return allProjects;
+}
+
+export function removeFromLocalStorage(key) {
+    for (let i = 0; i < localStorage.length; i++) {
+        if (key === JSON.parse(localStorage.getItem(localStorage.key(i))));
+        {
+            localStorage.removeItem(key);
+        }
+    }
 }

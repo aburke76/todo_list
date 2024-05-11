@@ -29,7 +29,6 @@ export function createTask() {
     clearTaskModal();
     closeTaskModal();
     displayTask(newTask);
-    addProjectToLocalStorage(activeProject());
 }
 
 export function activeProject() {

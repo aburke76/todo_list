@@ -22,14 +22,16 @@ export function displayProject() {
     projectDiv.append(projectName);
 
     const delBtn = document.createElement("button");
-    delBtn.classList.add("delBtn");
-    delBtn.setAttribute("id", currentProjectId);
-    const i = document.createElement("i");
-    i.classList.add("fa-solid", "fa-minus", "fa-2xl");
-    delBtn.append(i);
-    projectDiv.append(delBtn);
+    if (projectList.allProjects[currentProject].name !== "Default") {
+        delBtn.classList.add("delBtn");
+        delBtn.setAttribute("id", currentProjectId);
+        const i = document.createElement("i");
+        i.classList.add("fa-solid", "fa-minus", "fa-2xl");
+        delBtn.append(i);
+        projectDiv.append(delBtn);
+    }
 
-    projectName.addEventListener("click", (target) => {
+    projectDiv.addEventListener("click", (target) => {
         const clickedProject = target.target;
         allProjectsInactive();
         projectList.allProjects.forEach((project) => {
@@ -85,4 +87,47 @@ export function displayActiveProject() {
     }
 }
 
-export function displayImportedProjects(project) {}
+export function displayImportedProjects() {
+    const sidebarContent = document.querySelector("#sidebar-content");
+    const projectH3 = document.querySelector("#project-h3");
+
+    projectList.allProjects.forEach((project) => {
+        const projectDiv = document.createElement("div");
+        projectDiv.classList.add("project-div");
+        projectDiv.setAttribute("id", project.id);
+        const projectName = document.createElement("h3");
+        projectName.textContent = project.name;
+        projectName.setAttribute("id", project.id);
+        projectName.classList.add("project-name");
+        projectDiv.append(projectName);
+
+        const delBtn = document.createElement("button");
+        delBtn.classList.add("delBtn");
+        delBtn.setAttribute("id", project.id);
+        const i = document.createElement("i");
+        i.classList.add("fa-solid", "fa-minus", "fa-2xl");
+        delBtn.append(i);
+        projectDiv.append(delBtn);
+
+        projectName.addEventListener("click", (target) => {
+            const clickedProject = target.target;
+            allProjectsInactive();
+            projectList.allProjects.forEach((project) => {
+                if (project.id === clickedProject.id) {
+                    project.active = true;
+                    clearAllTasks();
+                    displayAllTasks();
+                    projectH3.textContent = clickedProject.textContent;
+                }
+            });
+        });
+
+        delBtn.addEventListener("click", () => {
+            clearAllTasks();
+            deleteProject(project.id);
+        });
+
+        sidebarContent.append(projectDiv);
+        displayAllTasks();
+    });
+}
