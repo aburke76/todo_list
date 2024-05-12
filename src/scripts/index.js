@@ -1,5 +1,6 @@
 import "../styles.css";
 import {
+    displayActiveProject,
     displayImportedProjects,
     displayNewestProject,
 } from "./displayProject";
@@ -75,6 +76,6 @@ closeProjectModal();
 closeTaskModal();
 
 displayImportedProjects();
-displayNewestProject();
+displayActiveProject();
 clearAllTasks();
 displayAllTasks();

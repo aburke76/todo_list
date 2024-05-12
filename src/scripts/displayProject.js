@@ -4,7 +4,11 @@ import {
     allProjectsInactive,
 } from "./manageProject";
 import { clearAllTasks, displayAllTasks } from "./displayTask";
-import { removeFromLocalStorage } from "./storage";
+import {
+    addToLocalStorage,
+    importProjectsFromLocalStorage,
+    removeFromLocalStorage,
+} from "./storage";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
@@ -42,6 +46,7 @@ export function displayProject() {
                 displayAllTasks();
                 projectH3.textContent = clickedProject.textContent;
             }
+            addToLocalStorage(project);
         });
     });
 
@@ -93,7 +98,7 @@ export function displayImportedProjects() {
     const sidebarContent = document.querySelector("#sidebar-content");
     const projectH3 = document.querySelector("#project-h3");
 
-    projectList.allProjects.forEach((project) => {
+    importProjectsFromLocalStorage().forEach((project) => {
         const projectDiv = document.createElement("div");
         projectDiv.classList.add("project-div");
         projectDiv.setAttribute("id", project.id);
