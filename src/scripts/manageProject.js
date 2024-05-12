@@ -78,7 +78,7 @@ export function createProject() {
     const userInput = document.querySelector("#project-title");
     const newProject = new Project(userInput.value);
     projectList.addProject(newProject);
-
+    addToLocalStorage(newProject);
     clearProjectModal();
     closeProjectModal();
     displayNewestProject();

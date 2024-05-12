@@ -2,15 +2,17 @@ import { displayProject } from "./displayProject";
 import { projectList, Project } from "./manageProject";
 import { Task } from "./manageProject";
 import { displayAllTasks } from "./displayTask";
+import { activeProject } from "./manageTask";
 
 export function addToLocalStorage(project) {
     const index = projectList.allProjects.length;
     const projectIndex = projectList.allProjects.indexOf(project);
     localStorage.setItem(
-        `project_${index}`,
+        projectList.allProjects[projectIndex].id,
         JSON.stringify(projectList.allProjects[projectIndex])
     );
 }
+
 export function importProjectsFromLocalStorage() {
     let allProjects = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -20,7 +22,7 @@ export function importProjectsFromLocalStorage() {
         return [];
     }
     allProjects = allProjects.map((obj) => {
-        const project = new Project(obj.name);
+        const project = new Project(obj.name, obj.active, obj.id);
         project.taskList = obj.taskList.map((task) => {
             const projectTask = new Task(
                 task.name,

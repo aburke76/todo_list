@@ -4,6 +4,7 @@ import {
     allProjectsInactive,
 } from "./manageProject";
 import { clearAllTasks, displayAllTasks } from "./displayTask";
+import { removeFromLocalStorage } from "./storage";
 
 export function displayProject() {
     const sidebarContent = document.querySelector("#sidebar-content");
@@ -47,6 +48,7 @@ export function displayProject() {
     delBtn.addEventListener("click", () => {
         clearAllTasks();
         deleteProject(currentProjectId);
+        removeFromLocalStorage(currentProjectId);
     });
 
     sidebarContent.append(projectDiv);
@@ -102,12 +104,14 @@ export function displayImportedProjects() {
         projectDiv.append(projectName);
 
         const delBtn = document.createElement("button");
-        delBtn.classList.add("delBtn");
-        delBtn.setAttribute("id", project.id);
-        const i = document.createElement("i");
-        i.classList.add("fa-solid", "fa-minus", "fa-2xl");
-        delBtn.append(i);
-        projectDiv.append(delBtn);
+        if (project.name !== "Default") {
+            delBtn.classList.add("delBtn");
+            delBtn.setAttribute("id", project.id);
+            const i = document.createElement("i");
+            i.classList.add("fa-solid", "fa-minus", "fa-2xl");
+            delBtn.append(i);
+            projectDiv.append(delBtn);
+        }
 
         projectName.addEventListener("click", (target) => {
             const clickedProject = target.target;

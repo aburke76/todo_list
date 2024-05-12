@@ -1,11 +1,14 @@
 import "../styles.css";
-import { displayImportedProjects, displayProject } from "./displayProject";
+import {
+    displayActiveProject,
+    displayImportedProjects,
+    displayNewestProject,
+} from "./displayProject";
 import {
     createProject,
     openProjectModal,
     closeProjectModal,
     projectList,
-    addDefault,
 } from "../scripts/manageProject";
 import {
     closeTaskModal,
@@ -13,7 +16,7 @@ import {
     openTaskModal,
     clearTaskModal,
 } from "../scripts/manageTask";
-import { importProjectsFromLocalStorage } from "./storage";
+import { clearAllTasks, displayAllTasks } from "./displayTask";
 
 const newProject = document.querySelector("#add-project");
 const submitProject = document.querySelector("#submit-project");
@@ -72,4 +75,7 @@ closeTask.addEventListener("click", () => {
 closeProjectModal();
 closeTaskModal();
 
-displayProject();
+displayImportedProjects();
+displayNewestProject();
+clearAllTasks();
+displayAllTasks();

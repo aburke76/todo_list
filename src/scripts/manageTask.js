@@ -1,6 +1,12 @@
 import { projectList, Task } from "./manageProject";
 import { displayTask } from "./displayTask";
-import { addProjectToLocalStorage } from "./storage";
+import {
+    addProjectToLocalStorage,
+    addTaskToLocalStorage,
+    addToLocalStorage,
+    importProjectsFromLocalStorage,
+} from "./storage";
+import { displayImportedProjects } from "./displayProject";
 
 export function openTaskModal() {
     const modal = document.querySelector("#task-modal");
@@ -26,6 +32,7 @@ export function createTask() {
     );
     activeProject();
     addTask(newTask);
+    addToLocalStorage(activeProject());
     clearTaskModal();
     closeTaskModal();
     displayTask(newTask);
@@ -117,6 +124,8 @@ export function deleteTask(taskId) {
             div.remove();
         }
     });
+    addToLocalStorage(currentProject);
+    importProjectsFromLocalStorage();
 }
 
 export function selectAllTasks() {
