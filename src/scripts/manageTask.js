@@ -1,12 +1,6 @@
 import { projectList, Task } from "./manageProject";
 import { displayTask } from "./displayTask";
-import {
-    addProjectToLocalStorage,
-    addTaskToLocalStorage,
-    addToLocalStorage,
-    importProjectsFromLocalStorage,
-} from "./storage";
-import { displayImportedProjects } from "./displayProject";
+import { addToLocalStorage, importProjectsFromLocalStorage } from "./storage";
 
 export function openTaskModal() {
     const modal = document.querySelector("#task-modal");

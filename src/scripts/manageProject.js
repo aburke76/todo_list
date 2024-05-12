@@ -3,7 +3,6 @@ import {
     displayNewestProject,
     displayProject,
     displayActiveProject,
-    displayImportedProjects,
 } from "./displayProject";
 import { addToLocalStorage, importProjectsFromLocalStorage } from "./storage";
 

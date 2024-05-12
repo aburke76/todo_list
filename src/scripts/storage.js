@@ -1,8 +1,5 @@
-import { displayProject } from "./displayProject";
 import { projectList, Project } from "./manageProject";
 import { Task } from "./manageProject";
-import { displayAllTasks } from "./displayTask";
-import { activeProject } from "./manageTask";
 
 export function addToLocalStorage(project) {
     const index = projectList.allProjects.length;

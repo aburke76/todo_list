@@ -1,6 +1,5 @@
 import "../styles.css";
 import {
-    displayActiveProject,
     displayImportedProjects,
     displayNewestProject,
 } from "./displayProject";
